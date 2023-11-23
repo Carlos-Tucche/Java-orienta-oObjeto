@@ -1,9 +1,0 @@
-package br.com.treinamento;
-
-public class Pessoal {
-
-	String nome;
-	int idade;
-	double peso;
-	double altura;
-}
