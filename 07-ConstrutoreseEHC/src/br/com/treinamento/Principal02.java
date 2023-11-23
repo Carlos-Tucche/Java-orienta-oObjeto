@@ -9,6 +9,8 @@ public class Principal02 {
 		
 		Carro carro2 = new Carro(1989);
 		System.out.println("Idade do carro: "+carro2.idadeCarro());
+		
+		System.out.println(carro);
 	}
 
 }

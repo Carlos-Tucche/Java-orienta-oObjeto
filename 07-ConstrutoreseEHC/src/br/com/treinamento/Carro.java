@@ -33,7 +33,10 @@ public class Carro {
 	public Integer getAnoFabricacao() {
 		return anoFabricacao;
 	}
-		
-	
 
+	@Override
+	public String toString() {
+		return "Carro [marca=" + marca + ", nome=" + nome + ", anoFabricacao=" + anoFabricacao + "]";
+	}
+		
 }
