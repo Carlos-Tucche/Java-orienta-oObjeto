@@ -16,8 +16,8 @@ public class Principal {
 		
 		System.out.println("Pessoa A é igual a pessoa B? "+ pessoaA.equals(pessoaB));//true
 		
-		System.out.println("Hash pessoa A: "+ pessoaA.hashCode());//
+		System.out.println("Hash pessoa A: "+ pessoaA.hashCode());//2011240466
 		
-		System.out.println("Hash pessoa B: "+ pessoaB.hashCode());
+		System.out.println("Hash pessoa B: "+ pessoaB.hashCode());//2011240466
 	}
 }
