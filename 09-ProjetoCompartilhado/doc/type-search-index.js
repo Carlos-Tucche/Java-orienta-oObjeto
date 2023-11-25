@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"br.com.treinamento.utilitarios","l":"AuxiliarString"},{"p":"br.com.treinamento.calculos","l":"Calculos"},{"p":"br.com.treinamento","l":"Principal"}];updateSearchResults();
