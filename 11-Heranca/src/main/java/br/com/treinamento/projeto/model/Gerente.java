@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
 public class Gerente extends Funcionario {
 	
 	public Gerente(String nome, Integer registro) {
@@ -15,4 +14,10 @@ public class Gerente extends Funcionario {
 	@Getter @Setter
 	private Double salario;
 
+	@Override
+	public String toString() {
+		return "Gerente [salario=" + salario + ", getSalario()=" + getSalario() + ", getNome()=" + getNome()
+				+ ", getRegistro()=" + getRegistro() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 }

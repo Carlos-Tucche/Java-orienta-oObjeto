@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
 public class Funcionario {
 
 	public Funcionario(String nome, Integer registro) {
@@ -18,5 +17,7 @@ public class Funcionario {
 	
 	@Getter @Setter
 	private Integer registro;
+	
+	
 
 }
