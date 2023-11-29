@@ -9,13 +9,14 @@ public class Usuario {
 	private String nome;
 	
 	@Getter @Setter
+	private Integer idade;
+	
+	@Getter @Setter
 	private String endereço;
 	
 	@Getter @Setter
 	private Integer telefone;
 
-	@Getter @Setter
-	private String cpf;
 	
 	
 }
