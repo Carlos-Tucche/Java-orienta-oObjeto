@@ -5,6 +5,10 @@ import lombok.Setter;
 
 public class Biblioteca extends Livros {
 
+	public Biblioteca(String nomeDoLivro, String autor, String categoria) {
+		super(nomeDoLivro, autor, categoria);
+	}
+
 	@Getter @Setter
 	private String dataReserva;
 	

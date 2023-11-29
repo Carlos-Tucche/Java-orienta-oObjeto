@@ -5,6 +5,17 @@ import lombok.Setter;
 
 public class Usuario {
 
+	public Usuario(String nome, Integer idade, String endereco, Integer telefone) {
+		super();
+		this.nome = nome;
+		this.idade = idade;
+		this.endereco = endereco;
+		this.telefone = telefone;
+	}
+
+	public Usuario() {
+			}
+
 	@Getter @Setter
 	private String nome;
 	
@@ -12,7 +23,7 @@ public class Usuario {
 	private Integer idade;
 	
 	@Getter @Setter
-	private String endereço;
+	private String endereco;
 	
 	@Getter @Setter
 	private Integer telefone;
