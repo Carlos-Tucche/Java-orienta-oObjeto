@@ -15,11 +15,12 @@ public class App
     	Livro livro2 = new Livro("O Cortiço","Aluizio de Azevedo", "Emprestado");
     	
     	Biblioteca biblioteca = new Biblioteca();
-    	biblioteca.getUsuario(usuario1);
-    	biblioteca.getLivro(livro1);
+    	biblioteca.setUsuario(usuario1);
+    	biblioteca.setLivro(livro1);
     	
-    	System.out.println("O livro "+ livro1.getTitulo()+" esta "+ livro1.getEmprestimo());
-    	System.out.println("O livro "+ livro2.getTitulo()+" foi emprestado para "+usuario1.getNome());
+    	System.out.println("O livro "+ livro1.getTitulo()+" esta: "+ livro1.getEmprestimo());
+    	System.out.println("O livro "+ livro2.getTitulo()+" foi emprestado para: "+usuario1.getNome());
+    	System.out.println("O livro ");
     	
     }
 }

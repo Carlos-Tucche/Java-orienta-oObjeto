@@ -1,7 +1,5 @@
 package br.com.treinamento.Revisap2.model;
 
-import java.util.Objects;
-
 import lombok.Getter;
 import lombok.Setter;
 
