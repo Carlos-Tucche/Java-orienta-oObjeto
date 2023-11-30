@@ -1,5 +1,7 @@
 package br.com.treinamento.Revisap2.model;
 
+import java.util.Objects;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +15,24 @@ public class Livro {
 	
 	@Getter @Setter
 	private String emprestimo;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(emprestimo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Livro other = (Livro) obj;
+		return Objects.equals(emprestimo, other.emprestimo);
+	}
+	
+	
+	
 }
