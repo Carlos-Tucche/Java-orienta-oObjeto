@@ -7,6 +7,13 @@ import lombok.Setter;
 
 public class Livro {
 	
+	public Livro(String titulo, String autor,String emprestimo) {
+		super();
+		this.titulo = titulo;
+		this.autor = autor;
+		this.emprestimo = emprestimo;
+	}
+
 	@Getter @Setter
 	private String titulo;
 	
