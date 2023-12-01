@@ -14,12 +14,8 @@ public class Biblioteca {
 	private Usuario usuario;
 
 	public void getLivro(Livro livro1) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void getUsuario(Usuario usuario1) {
-		// TODO Auto-generated method stub
-		
 	}
 }
