@@ -11,9 +11,9 @@ public class Usuario extends Pessoa {
 		this.email = email;
 	}
 
-	@Getter @Setter
+	@Getter
 	private Integer telefone;
 	
-	@Getter @Setter
+	@Getter 
 	private String email;
 }

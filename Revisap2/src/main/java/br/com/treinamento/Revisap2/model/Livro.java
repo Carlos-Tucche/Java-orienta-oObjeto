@@ -5,7 +5,7 @@ import lombok.Setter;
 
 public class Livro {
 	
-	public Livro(String titulo, String autor,String emprestimo) {
+	public Livro(String titulo, String autor,Boolean emprestimo) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -19,6 +19,18 @@ public class Livro {
 	private String autor;
 	
 	@Getter @Setter
-	private String emprestimo;
+	private Boolean emprestimo;
+	
+	@Getter 
+	private Boolean emprestado;
 
+	@Getter
+	private Boolean devolvido;
+	
+	public void empretar() {
+		this.emprestado = true;
+	}
+	public void devolver() {
+		this.devolvido = false;
+	}
 }

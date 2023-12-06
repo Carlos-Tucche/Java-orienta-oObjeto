@@ -22,6 +22,6 @@ public class App
     	System.out.println("O livro "+ livro1.getTitulo()+" esta: "+ livro1.getEmprestimo());
     	System.out.println("O livro "+ livro2.getTitulo()+" foi emprestado para: "+usuario1.getNome());
     	System.out.println("O livro "+ livro2.getTitulo()+" tem status de: "+ livro2.getEmprestimo());
-    	System.out.println("o livro "+ livro3.getTitulo()+" esta com status de: "+ livro3.getEmprestimo());
+    	System.out.println("o livro "+ livro3.getTitulo()+"tem status de; "+ livro3.getEmprestimo());
     }
 }
