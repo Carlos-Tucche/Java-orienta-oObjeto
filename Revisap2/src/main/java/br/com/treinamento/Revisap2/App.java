@@ -11,9 +11,9 @@ public class App
     public static void main( String[] args )
     {
     	Usuario usuario1 = new Usuario("Carlos", 43, 9123456, "cad@gmail.com");
-    	Livro livro1 = new Livro("Braz Cubas", "Machado de Assis", "Disponivel");
-    	Livro livro2 = new Livro("O Cortiço","Aluizio de Azevedo", "Emprestado");
-    	Livro livro3 = new Livro("A mão e a Luva", "Machado de Assis", "Entregue");
+    	Livro livro1 = new Livro("Braz Cubas", "Machado de Assis", false);
+    	Livro livro2 = new Livro("O Cortiço","Aluizio de Azevedo", false);
+    	Livro livro3 = new Livro("A mão e a Luva", "Machado de Assis", false);
     	
     	Biblioteca biblioteca = new Biblioteca();
     	biblioteca.setUsuario(usuario1);
