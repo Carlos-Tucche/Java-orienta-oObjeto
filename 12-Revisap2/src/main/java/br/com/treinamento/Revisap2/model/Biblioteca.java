@@ -18,4 +18,15 @@ public class Biblioteca {
 
 	public void getUsuario(Usuario usuario1) {
 	}
+	
+	public Boolean emprestrar (){
+		
+		return true;
+	}
+	
+	public Boolean devolver (){
+		
+		return true;
+	}
 }
+	
