@@ -2,12 +2,17 @@ package br.com.treinamento.debug;
 
 public class Principal {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) 
+ {
 		
 		System.out.println("Inicio do  método main");
 		
-		metodo1(5);
-		
+		try {
+			metodo1(3);
+		} catch (Exception e) {
+		System.err.println("Erro ao executar o método 1");
+		System.err.println("motivo: "+e.getStackTrace());
+		}
 		
 		System.out.println("Fim do método main");
 
