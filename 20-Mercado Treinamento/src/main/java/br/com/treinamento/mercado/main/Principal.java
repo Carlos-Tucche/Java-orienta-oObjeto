@@ -1,31 +1,45 @@
 package br.com.treinamento.mercado.main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import br.com.treinamento.mercado.model.Cliente;
 import br.com.treinamento.mercado.service.MercadoSevice;
 
 public class Principal {
 	
-	static Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
+	public static List<Cliente> clienteList = new ArrayList<Cliente>();
 
 	public static void main(String[] args) {
 	
 		while(true) {
 			
-			MercadoSevice.montarMenu();
+	 		MercadoSevice.montarMenu();
 			
 			System.out.print("Opção: ");
 			Integer opcao = scanner.nextInt();
+			scanner.nextLine();
 			
 			switch (opcao) {
 			case 1: {
-				//Cadatra o cliente
+				
+				MercadoSevice.cadastrarCliente();
+				
 				break;
 			}
+			
+			case 2: {
+				
+				MercadoSevice.listarClientes();
+				
+				break;
+			}
+			
 			case 5: {
-				scanner.close();
-				System.out.println("Obrigado");
-				System.exit(0);
+				
+				MercadoSevice.sair();
 			}
 			default:
 				System.out.println("Opção inválida! Tente novamente.");
