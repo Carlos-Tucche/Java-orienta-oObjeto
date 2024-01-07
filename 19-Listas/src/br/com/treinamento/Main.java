@@ -36,7 +36,7 @@ public class Main {
 		System.out.println("\n");
 
 		//Caso eu queira posso trabalhar com {} como se fosse uma função,
-		//adicinamdo manis elementos.
+ 		//adicinamdo manis elementos.
 		bancoPessoas.forEach(p -> {
 			System.out.println(p.getIdade()+2);
 		});
