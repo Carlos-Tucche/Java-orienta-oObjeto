@@ -51,6 +51,12 @@ public class Principal {
 				break;
 			}
 			
+			case 4: {
+				ProdutoService.listarProduto();
+				
+				break;				
+			}
+			
 			case 5: {
 				
 				MercadoSevice.sair();

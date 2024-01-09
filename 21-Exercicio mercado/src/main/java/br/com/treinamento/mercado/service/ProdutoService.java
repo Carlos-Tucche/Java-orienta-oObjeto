@@ -21,17 +21,17 @@ public class ProdutoService {
 		Principal.produtoList.add(new Produto(nome, preco, null));
 	}
 	
-	public static void listarClientes() {
+	public static void listarProduto() {
 		System.out.println("Listagem de Produto: ");
 		System.out.println("-------------------------------");
-		System.out.println("Nome \\ E-mail");
+		System.out.println("Produto \\ Preço");
 		System.out.println("-------------------------------");
 		
 		/*for (Cliente cliente : clienteList) {
 		System.out.println(cliente.getNome()+" - "+cliente.getEmail());
 		}*/
 		
-		Principal.clienteList.forEach(c-> System.out.println(c.getNome()+ " - "+ c.getEmail()));
+		Principal.produtoList.forEach(p-> System.out.println(p.getNomeProduto()+ " - "+ p.getPreco()));
 		
 		System.out.println("-------------------------------");
 	}

@@ -7,9 +7,9 @@ import lombok.Setter;
 
 public class Produto {
 	
-	public Produto(String nome, BigDecimal preco, Integer codigoProduto) {
+	public Produto(String nomeProduto, BigDecimal preco, Integer codigoProduto) {
 		this.codigoProduto = codigoProduto;
-		this.nome = nome;
+		this.nomeProduto = nomeProduto;
 		this.preco = preco;
 	}
 	
@@ -17,7 +17,7 @@ public class Produto {
 	private Integer codigoProduto;
 
 	@Getter @Setter
-	private String nome;
+	private String nomeProduto;
 
 	@Getter @Setter
 	private BigDecimal preco;

@@ -9,6 +9,7 @@ public class MercadoSevice {
 		System.out.println("1 - Cadrastrar Cliente");
 		System.out.println("2 - Listar Clientes");
 		System.out.println("3 - Adicionar Produto");
+		System.out.println("4 - Lista Produto");
 		System.out.println("5 - Sair");
 	}
 
