@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 import br.com.treinamento.mercado.model.Cliente;
 import br.com.treinamento.mercado.model.Produto;
+import br.com.treinamento.mercado.service.ClienteService;
 import br.com.treinamento.mercado.service.MercadoSevice;
+import br.com.treinamento.mercado.service.ProdutoService;
 
 public class Principal {
 	
@@ -31,20 +33,20 @@ public class Principal {
 			switch (opcao) {
 			case 1: {
 				
-				MercadoSevice.cadastrarCliente();
+				ClienteService.cadastrarCliente();
 				
 				break;
 			}
 			
 			case 2: {
 				
-				MercadoSevice.listarClientes();
+				ClienteService.listarClientes();
 				
 				break;
 			}
 			
 			case 3: {
-				MercadoSevice.cadastrarProduto();
+				ProdutoService.cadastrarProduto();
 				
 				break;
 			}
