@@ -20,7 +20,7 @@ public class ProdutoService {
 		
 		Principal.produtoList.add(new Produto(nome, preco, null));
 	}
-	
+	 
 	public static void listarProduto() {
 		System.out.println("Listagem de Produto: ");
 		System.out.println("-------------------------------");

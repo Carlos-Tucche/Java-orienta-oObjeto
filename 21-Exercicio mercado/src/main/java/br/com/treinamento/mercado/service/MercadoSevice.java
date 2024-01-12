@@ -5,7 +5,7 @@ import br.com.treinamento.mercado.main.Principal;
 public class MercadoSevice {
 
 	public static void montarMenu() {
-		System.out.println("Sistema de vendas - Selecione uma opção:");
+		System.out.println("Sistema de Pedidos - Selecione uma opção:");
 		System.out.println("1 - Cadrastrar Cliente");
 		System.out.println("2 - Listar Clientes");
 		System.out.println("3 - Adicionar Produto");
