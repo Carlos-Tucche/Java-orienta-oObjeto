@@ -5,6 +5,10 @@ import br.com.treinamento.mercado.model.Cliente;
 
 public class ClienteService {
 
+	/*
+	 * Método para validar e cadatrar clientes
+	 * */
+	
 	public static void cadastrarCliente() {
 
 		System.out.println("Cadastro de Clientes: ");
@@ -53,7 +57,10 @@ public class ClienteService {
 		Principal.scanner.nextLine();
 		}
 	
-
+	/*
+	 * Método para listar clientes
+	 * */
+	
 	public static void listarClientes() {
 		System.out.println("Listagem de cliente: ");
 		System.out.println("\n\n-------------------------------");
@@ -70,6 +77,8 @@ public class ClienteService {
 		System.out.printf("%-10s %-25s %-25s \n",c.getCodigoCliente(),c.getNome(),c.getEmail());
 		});
 		
+		System.out.println("Fim da lista.\nPrecione enter para continuar.");
+		Principal.scanner.nextLine();
 		System.out.println("-------------------------------");
 	}
 
