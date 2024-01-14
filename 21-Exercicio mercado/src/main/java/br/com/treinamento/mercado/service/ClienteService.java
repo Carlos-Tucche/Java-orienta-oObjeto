@@ -10,48 +10,33 @@ public class ClienteService {
 	 * */
 	
 	public static void cadastrarCliente() {
-
 		System.out.println("Cadastro de Clientes: ");
 		System.out.println("-------------------------------\n") ;
 		
+		//metodo valiadar codigo
+		Integer codigo = MercadoSevice.validarcodigo();
+		
 		boolean codigoValido = false;
-		Integer codigoCliente = null;
 		
 		while (!codigoValido) {
-
-			// O codigo é valido? É um número?
-			while (codigoCliente == null) {
-				try {
-					System.out.print("Digite o Codigo do cliente: ");
-					codigoCliente = Principal.scanner.nextInt();
-					Principal.scanner.nextLine();
-					
-				} catch (Exception e) {
-					System.out.println("Codigo invalido! Digite um número inteiro.");
-					Principal.scanner.nextLine();
+			boolean codigoDupilcado = false;
+			for(Cliente cliente : Principal.clienteList){					if(cliente.getCodigo().equals(codigo)) {
+					System.out.println("Codigo já possui cadatro!");
+					codigoDupilcado = true;
 				}
-			
-		}
-		 
-		boolean codigoDupilcado = false;
-		for(Cliente cliente : Principal.clienteList){
-			if(cliente.getCodigoCliente().equals(codigoCliente)) {
-				System.out.println("Codigo já possui cadatro!");
-				codigoDupilcado = true;
 			}
-		}
 			if(!codigoDupilcado) {
 				codigoValido = true;
 			}
-			
 		}
+		
 		System.out.print("Nome: ");
 		String nome = Principal.scanner.nextLine();
 		
 		System.out.print("E-mail: ");
 		String email = Principal.scanner.nextLine();
 	
-		Principal.clienteList.add(new Cliente(codigoCliente, nome, email));	
+		Principal.clienteList.add(new Cliente(codigo, nome, email));	
 		
 		System.out.println("Cliente cadastrado com sucesso.\n Pressiione ENTER para continua.");
 		Principal.scanner.nextLine();
@@ -74,12 +59,11 @@ public class ClienteService {
 		}*/
 		
 		Principal.clienteList.forEach(c-> {
-		System.out.printf("%-10s %-25s %-25s \n",c.getCodigoCliente(),c.getNome(),c.getEmail());
+		System.out.printf("%-10s %-25s %-25s \n",c.getCodigo(),c.getNome(),c.getEmail());
 		});
 		
 		System.out.println("Fim da lista.\nPrecione enter para continuar.");
 		Principal.scanner.nextLine();
 		System.out.println("-------------------------------");
 	}
-
 }

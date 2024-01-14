@@ -6,22 +6,31 @@ import br.com.treinamento.mercado.main.Principal;
 import br.com.treinamento.mercado.model.Produto;
 
 public class ProdutoService {
+	
+	/*
+	 * Método para validar e cadatrar clientes
+	 * */
 
 	public static void cadastrarProduto() {
 		System.out.println("Cadastro de Produto: ");
 		System.out.println("-------------------------------");
 		
-		Integer codigoProduto = null;
-		while (codigoProduto == null) {
-			try {
-				System.out.println("Codigo do produto: ");
-				codigoProduto = Principal.scanner.nextInt();
-				Principal.scanner.nextLine();
-			} catch (Exception e) {
-				System.out.println("Codigo invalido, digite um número inteiro: ");
-				Principal.scanner.nextLine();
+		//metodo valiadar codigo
+		MercadoSevice.validarcodigo();
+				
+		boolean codigoValido = false;
+		
+		while (!codigoValido) {
+			boolean codigoDuplicado = false;
+			for(Produto produto : Principal.produtoList){ 
+					System.out.println("Codigo já possui cadatro!");
+					codigoDuplicado = true;
+				}
+			if(!codigoDuplicado) {
+				codigoValido = true;
 			}
-		}
+			
+			}
 		
 		System.out.print("Nome: ");
 		String nome = Principal.scanner.nextLine();
@@ -30,37 +39,35 @@ public class ProdutoService {
 		String precoString = Principal.scanner.nextLine().replace(",",".");
 		BigDecimal preco = new BigDecimal(precoString);
 		
-		boolean codigoDupilcado = false;
-		for(Produto produto : Principal.produtoList){ 
-			if(produto.getCodigoProduto().equals(codigoProduto)) {
-				System.out.println("Codigo já possui cadatro!");
-				codigoDupilcado = true;
-			}
-			if(!codigoDupilcado) {
-				Principal.produtoList.add(new Produto(null, nome, preco)); 
-			}
-			
-			System.out.println("Produto cadastrado com sucesso.\n Pressiione ENTER para continua.");
-			Principal.scanner.nextLine();
-
-		}
+		Principal.produtoList.add(new Produto(null, nome, preco));
 		
-	}
+		System.out.println("Produto cadastrado com sucesso.\n Pressione ENTER para continuario");
+		Principal.scanner.nextLine();
+		}
+	
+	/*
+	 * Método para listar clientes
+	 * */
 	 
 	public static void listarProduto() {
 		System.out.println("Listagem de Produto: ");
 		System.out.println("\n\n-------------------------------");
-		System.out.println("Codigo \\ Produto \\ Preço");
+		System.out.println("Codigo \t Nome Produto \t Preço");
 		System.out.println("-------------------------------");
 		
-		System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome Produto", "Preço");
+		System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "Preço");
 		
-
-		Principal.produtoList.forEach(p-> 
-		{System.out.printf("%-10s %-25s %-25s \n",p.getCodigoProduto()+ p.getNomeProduto()+ p.getPreco());});
+		/*for (Cliente cliente : clienteList) {
+		System.out.println(cliente.getNome()+" - "+cliente.getEmail());
+		}*/
 		
+		Principal.produtoList.forEach(p-> {
+		System.out.printf("%-10s %-25s %-25s \n",p.getCodigo(),p.getNomeProduto(),p.getPreco());
+		});
+		
+		System.out.println("Fim da lista.\nPrecione enter para continuar.");
+		Principal.scanner.nextLine();
 		System.out.println("-------------------------------");
 	}
 
 }
-

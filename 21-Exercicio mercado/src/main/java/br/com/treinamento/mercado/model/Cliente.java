@@ -5,14 +5,14 @@ import lombok.Setter;
 
 public class Cliente {
 
-	public Cliente(Integer codigoCliente, String nome, String email) {
-		this.codigoCliente = codigoCliente;
+	public Cliente(Integer codigo, String nome, String email) {
+		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
 	}
 
 	@Getter @Setter
-	private Integer codigoCliente;
+	private Integer codigo;
 
 	@Getter @Setter
 	private String nome;

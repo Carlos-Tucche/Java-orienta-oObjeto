@@ -19,4 +19,20 @@ public class MercadoSevice {
 		System.exit(0);
 	}
 
+	public static Integer validarcodigo() {
+		Integer codigo = null;
+			while (codigo == null) {
+				try {
+					System.out.print("Digite o Codigo: ");
+					codigo = Principal.scanner.nextInt();
+					Principal.scanner.nextLine();
+					
+				} catch (Exception e) {
+					System.out.println("Codigo invalido! Digite um número inteiro.");
+					Principal.scanner.nextLine();
+				}
+		}
+		return codigo;
+	}
+
 }
