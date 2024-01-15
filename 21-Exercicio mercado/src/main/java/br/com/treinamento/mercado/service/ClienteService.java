@@ -11,7 +11,7 @@ public class ClienteService {
 	
 	public static void cadastrarCliente() {
 		System.out.println("Cadastro de Clientes: ");
-		System.out.println("-------------------------------\n") ;
+		System.out.println("-------------------------------\n");
 		
 		//metodo valiadar codigo
 		Integer codigo = MercadoSevice.validarcodigo();
@@ -28,7 +28,7 @@ public class ClienteService {
 			if(!codigoDupilcado) {
 				codigoValido = true;
 			}
-		}
+			}
 		
 		System.out.print("Nome: ");
 		String nome = Principal.scanner.nextLine();
