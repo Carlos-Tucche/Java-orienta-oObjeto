@@ -15,9 +15,26 @@ public class ProdutoService {
 		System.out.println("Cadastro de Produto: ");
 		System.out.println("-------------------------------");
 		
-		//metodo valiadar codigo
-		Integer codigo = MercadoSevice.validarcodigo();
-				
+		boolean codigoValido = false;
+		Integer codigo = null;
+		
+		while (!codigoValido) {
+			
+			codigo = MercadoSevice.validarcodigo();
+			
+			boolean codigoDuplicado = false;
+			for(Produto produto : Principal.produtoList){
+				if(produto.getCodigo().equals(codigo)) {
+					System.out.println("Codigo já possui cadatro!"+codigo);
+					codigoDuplicado = true;
+					break;
+				}
+			} 
+		if(!codigoDuplicado) {
+			codigoValido =true;
+		}
+		}
+		
 		System.out.print("Nome: ");
 		String nome = Principal.scanner.nextLine();
 				
@@ -25,27 +42,11 @@ public class ProdutoService {
 		String precoString = Principal.scanner.nextLine().replace(",",".");
 		BigDecimal preco = new BigDecimal(precoString);
 		
-		boolean codigoValido = false;
-		
-		while (!codigoValido) {
-			boolean codigoDuplicado = false;
-			
-			for(Produto produto : Principal.produtoList){
-				if(produto.getCodigo().equals(codigo)) {
-					System.out.println("Codigo já possui cadatro!");
-					codigoDuplicado = true;
-				}
-			} 
-		if(!codigoDuplicado) {
-			Principal.produtoList.add(new Produto(codigo, nome, preco));
-		}
-		}
+		Principal.produtoList.add(new Produto(codigo, nome, preco));
 		
 		System.out.println("Produto cadastrado com sucesso.\n Pressione ENTER para continuario");
 		Principal.scanner.nextLine();
 		}
-	
-	
 	/*
 	 * Método para listar clientes
 	 * */

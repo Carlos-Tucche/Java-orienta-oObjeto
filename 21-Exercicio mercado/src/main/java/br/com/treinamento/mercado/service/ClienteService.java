@@ -13,16 +13,20 @@ public class ClienteService {
 		System.out.println("Cadastro de Clientes: ");
 		System.out.println("-------------------------------\n");
 		
-		//metodo valiadar codigo
-		Integer codigo = MercadoSevice.validarcodigo();
-		
 		boolean codigoValido = false;
+		Integer codigo = null;
 		
 		while (!codigoValido) {
+			
+			//metodo valiadar codigo
+			codigo = MercadoSevice.validarcodigo();			
+			
 			boolean codigoDupilcado = false;
-			for(Cliente cliente : Principal.clienteList){					if(cliente.getCodigo().equals(codigo)) {
-					System.out.println("Codigo já possui cadatro!");
+			for(Cliente cliente : Principal.clienteList){
+				if(cliente.getCodigo().equals(codigo)) {
+					System.out.println("Codigo já possui cadatro!"+codigo);
 					codigoDupilcado = true;
+					break;
 				}
 			}
 			if(!codigoDupilcado) {
