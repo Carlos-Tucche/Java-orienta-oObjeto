@@ -8,32 +8,15 @@ import br.com.treinamento.mercado.model.Produto;
 public class ProdutoService {
 	
 	/*
-	 * Método para validar e cadatrar clientes
+	 * Método para validar e cadatrar Produtos
 	 * */
 
 	public static void cadastrarProduto() {
 		System.out.println("Cadastro de Produto: ");
 		System.out.println("-------------------------------");
 		
-		boolean codigoValido = false;
-		Integer codigo = null;
-		
-		while (!codigoValido) {
-			
-			codigo = MercadoSevice.validarcodigo();
-			
-			boolean codigoDuplicado = false;
-			for(Produto produto : Principal.produtoList){
-				if(produto.getCodigo().equals(codigo)) {
-					System.out.println("Codigo já possui cadatro!"+codigo);
-					codigoDuplicado = true;
-					break;
-				}
-			} 
-		if(!codigoDuplicado) {
-			codigoValido =true;
-		}
-		}
+		//Método Verificador Cliente.
+		Integer codigo = verificarProduto();
 		
 		System.out.print("Nome: ");
 		String nome = Principal.scanner.nextLine();
@@ -46,9 +29,38 @@ public class ProdutoService {
 		
 		System.out.println("Produto cadastrado com sucesso.\n Pressione ENTER para continuario");
 		Principal.scanner.nextLine();
-		}
+	}	
+	
 	/*
-	 * Método para listar clientes
+	 * Método para Verificar Produtos
+	 * */
+
+	public static Integer verificarProduto() {
+		boolean codigoValido = false;
+		Integer codigo = null;
+		
+		while (!codigoValido) {
+			 	
+			//metodo valiadar codigo
+			codigo = MercadoSevice.validarcodigo();			
+			
+			boolean codigoDupilcado = false;
+			for(Produto produto : Principal.produtoList){
+				if(produto.getCodigo().equals(codigo)) {
+					System.out.println("Codigo já possui cadatro!"+codigo);
+					codigoDupilcado = true;
+					break;
+				}
+			}
+			if(!codigoDupilcado) {
+				codigoValido = true;
+			}
+		}
+		return codigo;
+	}
+	
+	/*
+	 * Método para listar Produtos
 	 * */
 	 
 	public static void listarProduto() {
@@ -71,5 +83,4 @@ public class ProdutoService {
 		Principal.scanner.nextLine();
 		System.out.println("-------------------------------");
 	}
-
 }

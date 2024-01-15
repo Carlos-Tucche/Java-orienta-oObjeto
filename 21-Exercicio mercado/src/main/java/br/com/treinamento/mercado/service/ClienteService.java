@@ -13,11 +13,31 @@ public class ClienteService {
 		System.out.println("Cadastro de Clientes: ");
 		System.out.println("-------------------------------\n");
 		
+		//Método Verifica CODIGO do Cliente
+		Integer codigo = verificaCliente();
+		
+		System.out.print("Nome: ");
+		String nome = Principal.scanner.nextLine();
+		
+		System.out.print("E-mail: ");
+		String email = Principal.scanner.nextLine();
+	
+		Principal.clienteList.add(new Cliente(codigo, nome, email));	
+		
+		System.out.println("Cliente cadastrado com sucesso.\n Pressiione ENTER para continua.");
+		Principal.scanner.nextLine();
+		}
+	
+	/*
+	 * Método para Verificar CODIGO do clientes
+	 * */
+
+	public static Integer verificaCliente() {
 		boolean codigoValido = false;
 		Integer codigo = null;
 		
 		while (!codigoValido) {
-			
+			 	
 			//metodo valiadar codigo
 			codigo = MercadoSevice.validarcodigo();			
 			
@@ -32,19 +52,9 @@ public class ClienteService {
 			if(!codigoDupilcado) {
 				codigoValido = true;
 			}
-			}
-		
-		System.out.print("Nome: ");
-		String nome = Principal.scanner.nextLine();
-		
-		System.out.print("E-mail: ");
-		String email = Principal.scanner.nextLine();
-	
-		Principal.clienteList.add(new Cliente(codigo, nome, email));	
-		
-		System.out.println("Cliente cadastrado com sucesso.\n Pressiione ENTER para continua.");
-		Principal.scanner.nextLine();
 		}
+		return codigo;
+	}
 	
 	/*
 	 * Método para listar clientes
