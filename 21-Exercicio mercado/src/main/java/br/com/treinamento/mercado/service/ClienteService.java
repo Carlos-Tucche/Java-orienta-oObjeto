@@ -2,7 +2,9 @@ package br.com.treinamento.mercado.service;
 
 import br.com.treinamento.mercado.main.Principal;
 import br.com.treinamento.mercado.model.Cliente;
+import lombok.ToString;
 
+@ToString
 public class ClienteService {
 
 	/*
@@ -10,23 +12,32 @@ public class ClienteService {
 	 * */
 	
 	public static void cadastrarCliente() {
-		System.out.println("Cadastro de Clientes: ");
-		System.out.println("-------------------------------\n");
 		
-		//Método Verifica CODIGO do Cliente
-		Integer codigo = verificaCliente();
-		
-		System.out.print("Nome: ");
-		String nome = Principal.scanner.nextLine();
-		
-		System.out.print("E-mail: ");
-		String email = Principal.scanner.nextLine();
-	
-		Principal.clienteList.add(new Cliente(codigo, nome, email));	
-		
-		System.out.println("Cliente cadastrado com sucesso.\n Pressiione ENTER para continua.");
-		Principal.scanner.nextLine();
-		}
+		 String resposta = "S";
+		 
+		 while (resposta.equalsIgnoreCase("S")) {
+			 System.out.print("\nCadastro de Clientes: ");
+				System.out.print("-------------------------------\n");
+				
+				//Método Verifica CODIGO do Cliente
+				Integer codigo = verificaCliente();
+				
+				System.out.print("Nome: ");
+				String nome = Principal.scanner.nextLine();
+				
+				System.out.print("E-mail: ");
+				String email = Principal.scanner.nextLine();
+			
+				Principal.clienteList.add(new Cliente(codigo, nome, email));
+				System.out.print("\n");
+				
+				System.out.print("Cliente cadastrado com sucesso.\nDeseja adicionar mais clientes? (S/N): ");
+				resposta = Principal.scanner.nextLine();
+				System.out.print("\n");
+				
+				}
+		 MercadoSevice.limparTela();
+		 }
 	
 	/*
 	 * Método para Verificar CODIGO do clientes
@@ -39,7 +50,7 @@ public class ClienteService {
 		while (!codigoValido) {
 			 	
 			//metodo valiadar codigo
-			codigo = MercadoSevice.validarcodigo();			
+			codigo = MercadoSevice.validarcodigo("cliente");			
 			
 			boolean codigoDupilcado = false;
 			for(Cliente cliente : Principal.clienteList){
@@ -62,9 +73,9 @@ public class ClienteService {
 	
 	public static void listarClientes() {
 		System.out.println("Listagem de cliente: ");
-		System.out.println("\n\n-------------------------------");
+		System.out.println("\n\n           -------------------------------");
 		System.out.println("Codigo \t Nome \t E-mail");
-		System.out.println("-------------------------------");
+		System.out.println("              -------------------------------");
 		
 		System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "E-mail");
 		
@@ -80,4 +91,32 @@ public class ClienteService {
 		Principal.scanner.nextLine();
 		System.out.println("-------------------------------");
 	}
+	
+	/*
+	 * Método para buscar clientes em criar pedidos.
+	 * */
+
+	public static Cliente getCliente() {
+		Cliente clientePedido = null;
+		Boolean clienteValido = false;
+		
+		while (!clienteValido) {
+			Integer codigoCliente = MercadoSevice.validarcodigo("cliente");
+			
+			for (Cliente cliente : Principal.clienteList) {
+				if (cliente.getCodigo().equals(codigoCliente)){
+					clientePedido = cliente;
+					break;
+				}
+			}
+			if (clientePedido!= null) {
+				clienteValido = true;
+			}else {
+				System.out.println("Cliente não encontrado");
+			}
+			
+		}
+		return clientePedido;
+	}
+
 }

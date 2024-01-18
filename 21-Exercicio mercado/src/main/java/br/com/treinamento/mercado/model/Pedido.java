@@ -6,25 +6,31 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class Pedido {
 	
-	public Pedido(Cliente clietne, List<Produto> produtosList, BigDecimal total) {
-		this.clietne = clietne;
-		
+	public Pedido(Cliente cliente) {
+		Pedido.numero = ++contador;
+		Pedido.cliente = cliente;
 	}
 
-	@Getter @Setter
-	private Cliente clietne;
+	static @Getter @Setter
+	private Integer numero;
+	private Integer contador = 0;
+	
+	static @Getter @Setter
+	private Cliente cliente;
 	
 	@Getter @Setter
-	private List<Produto> produtosList = new ArrayList<Produto>();
+	private List<ItemPedido> itensPedidos = new ArrayList<ItemPedido>();
+
+	static @Getter @Setter
+	private BigDecimal totalPedido = BigDecimal.ZERO;
 	
-	@Getter @Setter
-	private BigDecimal total;
-	
-	public void insereProduto(Produto produto) {
-		produtosList.add(produto);
+	public void adicionarItem(ItemPedido item) {
+		itensPedidos.add(item);
+		totalPedido = totalPedido.add(item.getValorTotal());
 	}
-	
 }

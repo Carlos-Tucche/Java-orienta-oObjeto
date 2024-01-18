@@ -1,7 +1,11 @@
 package br.com.treinamento.mercado.service;
 
-import br.com.treinamento.mercado.main.Principal;
+import java.io.IOException;
 
+import br.com.treinamento.mercado.main.Principal;
+import lombok.ToString;
+
+@ToString
 public class MercadoSevice {
 
 	/*
@@ -14,7 +18,10 @@ public class MercadoSevice {
 		System.out.println("2 - Listar Clientes");
 		System.out.println("3 - Adicionar Produto");
 		System.out.println("4 - Lista Produto");
-		System.out.println("5 - Sair");
+		System.out.println("5 - Criar Pedido");
+		System.out.println("6 - Listar Pedido");
+		System.out.println("7 - Detalhar Pedido");
+		System.out.println("0 - Sair");
 	}
 	
 	/*
@@ -31,11 +38,11 @@ public class MercadoSevice {
 	 * Metodo Validador de CODIGO
 	 * */
 	
-	public static Integer validarcodigo() {
+	public static Integer validarcodigo(String nome) {
 		Integer codigo = null;
 			while (codigo == null) {
 				try {
-					System.out.print("Digite o Codigo: ");
+					System.out.print("Digite o Codigo "+nome+": ");
 					codigo = Principal.scanner.nextInt();
 					Principal.scanner.nextLine();
 					
@@ -45,5 +52,20 @@ public class MercadoSevice {
 				}
 		}
 		return codigo;
+	}
+	
+	/*
+	 * Metodo Limpar tela
+	 * */
+
+	public static void limparTela() {
+		System.out.println("\n");
+		
+		// Windows
+		try {
+			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

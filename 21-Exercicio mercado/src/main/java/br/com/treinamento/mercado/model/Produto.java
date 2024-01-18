@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class Produto {
 	
 	public Produto(Integer codigo, String nomeProduto, BigDecimal preco) {
