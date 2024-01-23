@@ -42,7 +42,7 @@ public class MercadoSevice {
 		Integer codigo = null;
 			while (codigo == null) {
 				try {
-					System.out.print("Digite o Codigo "+nome+": ");
+					System.out.print("Digite o Codigo do "+nome+": ");
 					codigo = Principal.scanner.nextInt();
 					Principal.scanner.nextLine();
 					

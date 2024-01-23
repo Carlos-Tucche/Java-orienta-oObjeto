@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.treinamento.mercado.model.Cliente;
+import br.com.treinamento.mercado.model.ItemPedido;
 import br.com.treinamento.mercado.model.Pedido;
 import br.com.treinamento.mercado.model.Produto;
 import br.com.treinamento.mercado.service.ClienteService;
@@ -70,34 +71,59 @@ public class Principal {
 			}
 			
 			case 6: {
+
+				PedidoService.listarPedidos();	
 				
-				System.out.println("Listagem de Pedido: ");
-				System.out.println("\n\n-------------------------------------------------------------");
-				System.out.println("Codigo Pedido \t Nome Cliente \t\t Total Pedido");
-				System.out.println("                -------------------------------");
-				
-				System.out.printf("%-10s %-25s %-25s \n","Codigo Pedido", "Nome Cliente", "Total Pedido");
-				
-				
-				//PrintStream.printf("%-10s %-25s %-25s \n",Pedido.getNumero(),Pedido.getCliente(),Pedido.getTotalPedido()):
-				System.out.printf("%-10s %-25s %-25s \n",Pedido.getNumero(),Pedido.getCliente(),Pedido.getTotalPedido());
-				
-				
-				System.out.println("Fim da lista.\nPrecione enter para continuar.");
-				Principal.scanner.nextLine();
-				System.out.println("-------------------------------");
-				
-				MercadoSevice.limparTela();
-			
 				break;
-				}
-			
+			}
 			
 			case 7: {
 				//detalhar pedido
-				
-				
-				
+						
+				Pedido pedido = PedidoService.getPedido();
+				 
+				/* System.out.println("Pedido nº " + pedido.getNumero());
+			        System.out.println("--------------------------------------------");       
+
+			        System.out.println("Cliente: " + pedido.getCliente().getNome());
+			        System.out.println("Valor Total: R$" + pedido.getTotalPedido());
+			        System.out.println("Itens do Pedido: ");
+			        System.out.println("--------------------------------------------------------------------------------------------------");
+			        System.out.printf("%-10s %-30s %-20s %-20s %-20s", "Código", "Produto", "Valor Unit", "Qtd", "Valor Total");
+			        System.out.println("\n--------------------------------------------------------------------------------------------------");
+			        
+			        int i = 1;
+			        for(ItemPedido item : pedido.getItensPedido()){
+			            System.out.printf("%-10d %-30s %-20s %-20s %-20s\n", i, item.getProduto().getNome(), item.getValorUnitario(), item.getQuantidade(), item.getValorTotal());
+			            i++;
+			        }        
+
+			        System.out.println("--------------------------------------------------------------------------------------------------");
+			        System.out.println("Fim do pedido.\nPressione Enter para retornar...");
+			        SistemaCompras.scanner.nextLine();
+
+			    }*/
+
+				 System.out.println("PEDIDO nº " + pedido.getNumero());
+			     System.out.println("--------------------------------------------");  
+			     
+			     System.out.println("CLIENTE: "+ pedido.getCliente().getNome());
+			     System.out.println("VALOR TOTAL : R$ "+ pedido.getTotalPedido());
+			     System.out.println("ITENS DO PEDIDO: ");
+			     System.out.println("--------------------------------------------------------------------------------------------------");
+			     System.out.printf("%-10s %-30s %-20s %-20s %-20s", "NÚMERO PEDIDO", "PRODUTO", "VALOR UNIDADE", "QTD.", "VALOR TOTAL");
+			     System.out.println("--------------------------------------------------------------------------------------------------");
+			     
+			     int i = 1;
+			     for(ItemPedido item : pedido.getItensPedidos()) {
+			    	 System.out.printf("%-10s %-30s %-20s %-20s %-20s", i, item.getProduto().getNomeProduto(), item.getValorUnitario(), item.getQuantidade(), item.getValorTotal());
+			    	 i++;
+			     }
+			     
+			     System.out.println("--------------------------------------------------------------------------------------------------");
+			        System.out.println("Fim do Pedido.\nPressione Enter para retornar...");
+			        Principal.scanner.nextLine();
+			     
 				break;
 			}
 			
@@ -105,7 +131,7 @@ public class Principal {
 				
 				MercadoSevice.sair();
 			}
-			default:
+				default:
 				System.out.println("Opção inválida! Tente novamente.");
 			}
 			
