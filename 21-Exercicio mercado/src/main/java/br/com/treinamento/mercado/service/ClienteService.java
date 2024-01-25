@@ -16,26 +16,27 @@ public class ClienteService {
 		 String resposta = "S";
 		 
 		 while (resposta.equalsIgnoreCase("S")) {
-			 System.out.print("\nCadastro de Clientes: ");
-				System.out.print("-------------------------------\n");
+			 System.out.print("-------------------------------------------------\n");
+			 System.out.print("             CADASTRO DE CLIENTES                \n");
+			 System.out.print("-------------------------------------------------\n");
 				
-				//Método Verifica CODIGO do Cliente
-				Integer codigo = verificaCliente();
+			 //Método Verifica CODIGO do Cliente
+			 Integer codigo = verificaCliente();
 				
-				System.out.print("Nome: ");
-				String nome = Principal.scanner.nextLine();
-				
-				System.out.print("E-mail: ");
-				String email = Principal.scanner.nextLine();
+			 System.out.print("Nome: ");
+			 String nome = Principal.scanner.nextLine();
 			
-				Principal.clienteList.add(new Cliente(codigo, nome, email));
-				System.out.print("\n");
+			 System.out.print("E-mail: ");
+			 String email = Principal.scanner.nextLine();
+			
+			 Principal.clienteList.add(new Cliente(codigo, nome, email));
+			 System.out.print("\n");
 				
-				System.out.print("Cliente cadastrado com sucesso.\nDeseja adicionar mais clientes? (S/N): ");
-				resposta = Principal.scanner.nextLine();
-				System.out.print("\n");
+			 System.out.print("Cliente cadastrado com sucesso.\nDeseja adicionar mais clientes? (S/N): ");
+			 resposta = Principal.scanner.nextLine();
+			 System.out.print("\n");
 				
-				}
+			}
 		 MercadoSevice.limparTela();
 		 }
 	
@@ -55,7 +56,7 @@ public class ClienteService {
 			boolean codigoDupilcado = false;
 			for(Cliente cliente : Principal.clienteList){
 				if(cliente.getCodigo().equals(codigo)) {
-					System.out.println("Codigo já possui cadatro!"+codigo);
+					System.out.println("Codigo já possui cadatro! "+codigo);
 					codigoDupilcado = true;
 					break;
 				}
@@ -72,10 +73,12 @@ public class ClienteService {
 	 * */
 	
 	public static void listarClientes() {
-		System.out.println("Listagem de cliente: ");
-		System.out.println("\n\n           -------------------------------");
-		System.out.println("Codigo \t Nome \t E-mail");
-		System.out.println("              -------------------------------");
+		System.out.print("----------------------------------------------------------------\n");
+		System.out.print("                LISTA DE CLIENTES                \n");
+		System.out.print("----------------------------------------------------------------\n\n");
+		System.out.print("----------------------------------------------------------------\n");
+		System.out.println("Codigo \t   Nome \t               E-mail");
+		System.out.print("-----------------------------------------------------------------\n");
 		
 		System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "E-mail");
 		
