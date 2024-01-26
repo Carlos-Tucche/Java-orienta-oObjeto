@@ -74,7 +74,7 @@ public class ProdutoService {
 		 Principal.scanner.nextLine();
 	}
 
-	/*public void visualizarProdutos() {
+	public void visualizarProdutos() {
 		
 		ProdutoDao produtoDao = new ProdutoDao();
 		
@@ -84,12 +84,12 @@ public class ProdutoService {
 		Integer codigo = Principal.scanner.nextInt();
 		Principal.scanner.nextLine();
 		
-		Produto produto = produto.buscaPorId(codigo);
+		ProdutoDao produto = produto.buscarPorId(codigo);
 		
 		System.out.println("Nome do produto: "+produto.getNome());
 		System.out.println("Nome do produto: "+produto.getPreco());
 		
 		System.out.println("Fim da lista. \nPressione ENTER para voltar ao MENU.");
 		Principal.scanner.nextLine();
-	}*/
+	}
 }

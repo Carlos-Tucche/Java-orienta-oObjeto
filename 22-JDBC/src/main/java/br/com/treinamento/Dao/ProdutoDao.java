@@ -56,15 +56,16 @@ public class ProdutoDao {
 		
 		return produtoList;
 	}
-	
-	/*public ProdutoDao buscaPorId(Integer codigo) throws SQLException {
+
+	public ProdutoDao buscarPorId(Integer codigo) throws SQLException {
 		
 		ConnectFactory factory = new ConnectFactory();
 		Connection connection = factory.abreConexao();
 		
-		String sqlBuscaPorId = "SELECT id_produto, nome, preco FROM tb_produto";
+		//String sqlbusca= "SELECT id_produto, nome, preco FROM tb_produto";
+		
 		
 		return null;
-	}*/
-
+	}
+	
 }

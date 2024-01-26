@@ -36,7 +36,7 @@ public class Principal {
 			
 			case 3: {
 				
-			//	produtoService.visualizarProdutos();
+				produtoService.visualizarProdutos();
 				
 				break;
 			}
