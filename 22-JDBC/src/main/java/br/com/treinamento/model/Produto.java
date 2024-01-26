@@ -9,12 +9,16 @@ import lombok.ToString;
 @ToString 
 public class Produto {
 	
-	public Produto(String nome, BigDecimal precao) {
+	public Produto() {
+		
+	}
+	
+	public Produto(String nome, BigDecimal preco) {
 		this.nome = nome;
-		this.preco = precao;
+		this.preco = preco;
 	}
 
-	@Getter 
+	@Getter @Setter
 	private Integer id;
 	
 	@Getter @Setter
@@ -22,7 +26,5 @@ public class Produto {
 	
 	@Getter @Setter
 	private BigDecimal preco;
-	
-	
 
 }

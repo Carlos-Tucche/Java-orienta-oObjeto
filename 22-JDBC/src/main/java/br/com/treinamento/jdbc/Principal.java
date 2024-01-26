@@ -1,19 +1,17 @@
 package br.com.treinamento.jdbc;
 
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.treinamento.Dao.ProdutoDao;
-import br.com.treinamento.model.Produto;
+import br.com.treinamento.service.ProdutoService;
 import br.com.treinamento.service.SistemaService;
 
 public class Principal {
 
+	public static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) throws SQLException {
 		
-		Scanner scanner = new Scanner(System.in);
-		ProdutoDao produtoDao = new ProdutoDao();
+		ProdutoService produtoService = new ProdutoService();
 		
 		while (true) {
 			
@@ -25,33 +23,28 @@ public class Principal {
 			switch (opcao) {
 			case 1: {
 				
-				System.out.println("Cadastrar Produto.");
+				produtoService.cadastrarProduto();
 				
-				System.out.print("informe o nome do produto: ");
-				String nome = scanner.nextLine();
+				break;
+			}
+			case 2: {
 				
-				System.out.print("informe o valor: ");
-				BigDecimal preco = scanner.nextBigDecimal();
-				
-				Produto produto = new Produto(nome, preco);
-				
-				produtoDao.salvaProduto(produto);
-				
-				
-				System.out.println(produto);
-				System.out.println("Pressione ENTER para continuar.");
-				scanner.nextLine();
+				produtoService.listarProdutos();
 				
 				break;
 			}
 			
+			case 3: {
+				
+			//	produtoService.visualizarProdutos();
+				
+				break;
+			}
 			
 			default:
 				System.out.println("Opção invalida!");
 			}
 		}
-		
-		
 		
 	}
 

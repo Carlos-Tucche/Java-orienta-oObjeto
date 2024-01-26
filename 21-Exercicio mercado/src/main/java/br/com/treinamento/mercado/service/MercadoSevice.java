@@ -13,15 +13,19 @@ public class MercadoSevice {
 	 * */
 	
 	public static void montarMenu() {
-		System.out.println("Sistema de Pedidos - Selecione uma opção:");
-		System.out.println("1 - Cadrastrar Cliente");
-		System.out.println("2 - Listar Clientes");
-		System.out.println("3 - Adicionar Produto");
-		System.out.println("4 - Lista Produto");
-		System.out.println("5 - Criar Pedido");
-		System.out.println("6 - Listar Pedido");
-		System.out.println("7 - Detalhar Pedido");
-		System.out.println("0 - Sair");
+		System.out.print("*************************************************\n");
+		System.out.println("    SISTEMA DE COMPRAS - Selecione uma opção:");
+		System.out.print("*************************************************\n");
+		System.out.print("_____________________________\n                             |");
+		System.out.println("\n1 - Cadrastrar Cliente       |");
+		System.out.println("2 - Listar Clientes          |");
+		System.out.println("3 - Adicionar Produto        |");
+		System.out.println("4 - Lista Produto            |");
+		System.out.println("5 - Criar Pedido             |");
+		System.out.println("6 - Listar Pedido            |");
+		System.out.println("7 - Detalhar Pedido          |");
+		System.out.println("0 - Sair                     |");
+		System.out.print("_____________________________|");
 	}
 	
 	/*
@@ -42,7 +46,7 @@ public class MercadoSevice {
 		Integer codigo = null;
 			while (codigo == null) {
 				try {
-					System.out.print("Digite o Codigo do "+nome+": ");
+					System.out.print("\nDigite o Codigo do "+nome+": ");
 					codigo = Principal.scanner.nextInt();
 					Principal.scanner.nextLine();
 					

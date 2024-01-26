@@ -98,4 +98,28 @@ public class PedidoService {
 		return buscaPedido;
 	}
 
+	public static void detalharPedido() {
+		Pedido pedido = getPedido();
+	
+		System.out.println("PEDIDO nº " + pedido.getNumero());
+		System.out.println("--------------------------------------------");  
+		
+		System.out.println("CLIENTE: "+ pedido.getCliente().getNome());
+		System.out.println("VALOR TOTAL : R$ "+ pedido.getTotalPedido());
+		System.out.println("ITENS DO PEDIDO: ");
+		System.out.println("--------------------------------------------------------------------------------------------------");
+		System.out.printf("%-10s %-30s %-20s %-20s %-20s", "NÚMERO PEDIDO", "PRODUTO", "VALOR UNIDADE", "QTD.", "VALOR TOTAL");
+		System.out.println("--------------------------------------------------------------------------------------------------");
+		 
+		int i = 1;
+		for(ItemPedido item : pedido.getItensPedidos()) {
+			System.out.printf("%-10s %-30s %-20s %-20s %-20s", i, item.getProduto().getNomeProduto(), item.getValorUnitario(), item.getQuantidade(), item.getValorTotal());
+			i++;
+		 }
+		 
+		 System.out.println("--------------------------------------------------------------------------------------------------");
+		 System.out.println("Fim do Pedido.\nPressione Enter para retornar...");
+		 Principal.scanner.nextLine();
+	}
+
 }
