@@ -8,12 +8,12 @@ import lombok.ToString;
 public class ClienteService {
 
 	/*
-	 * Método para validar e cadatrar clientes
-	 * */
+	 * Método para validar e cadatrar cliente
+	 */
 	
 	public static void cadastrarCliente() {
 		 
-		 System.out.print("*************************************************\n");
+		 System.out.print("\n*************************************************\n");
 		 System.out.print("             CADASTRO DE CLIENTES                \n");
 		 System.out.print("*************************************************\n");
 		
@@ -26,24 +26,19 @@ public class ClienteService {
 				
 			System.out.print("Nome: ");
 			String nome = Principal.scanner.nextLine();
-			
 			System.out.print("E-mail: ");
 			String email = Principal.scanner.nextLine();
-			
 			Principal.clienteList.add(new Cliente(codigo, nome, email));
-			//System.out.print("\n");
-				
+			System.out.print("\n");
 			System.out.print("Cliente cadastrado com sucesso.\nDeseja adicionar mais clientes? (S/N): ");
 			resposta = Principal.scanner.nextLine();
-			System.out.print("\n");
 				
 			}
-		 MercadoSevice.limparTela();
 		 }
 	
 	/*
-	 * Método para Verificar CODIGO do clientes
-	 * */
+	 * Método para Verificar CODIGO do cliente
+	 */
 
 	public static Integer verificaCliente() {
 		boolean codigoValido = false;
@@ -70,18 +65,17 @@ public class ClienteService {
 	}
 	
 	/*
-	 * Método para listar clientes
-	 * */
+	 * Método para listar cliente
+	 */
 	
 	public static void listarClientes() {
-		System.out.print("****************************************************************\n");
+		System.out.print("\n****************************************************************\n");
 		System.out.print("                     LISTA DE CLIENTES                          \n");
 		System.out.print("****************************************************************\n");
 		System.out.print("----------------------------------------------------------------\n");
-		//System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "E-mail");
+		System.out.printf("%-10s %-25s %-25s \n","CÓDIGO", "NOME", "E-MAIL");
 		System.out.print("-----------------------------------------------------------------\n");
 		
-		System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "E-mail");
 		
 		/*for (Cliente cliente : clienteList) {
 		System.out.println(cliente.getNome()+" - "+cliente.getEmail());
@@ -90,16 +84,16 @@ public class ClienteService {
 		Principal.clienteList.forEach(c-> {
 		System.out.printf("%-10s %-25s %-25s \n",c.getCodigo(),c.getNome(),c.getEmail());
 		});
-		
-		System.out.println("Fim da lista.\nPrecione ENTER para voltar ao MENU.");
+
 		System.out.print("-----------------------------------------------------------------\n");
+		System.out.println("Fim da lista.\nPrecione ENTER para voltar ao MENU.");
 		Principal.scanner.nextLine();
 		
 	}
 	
 	/*
-	 * Método para buscar clientes em criar pedidos.
-	 * */
+	 * Método para buscar clientes em criar pedido.
+	 */
 
 	public static Cliente getCliente() {
 		Cliente clientePedido = null;
@@ -117,9 +111,8 @@ public class ClienteService {
 			if (clientePedido!= null) {
 				clienteValido = true;
 			}else {
-				System.out.println("Cliente não encontrado");
+				System.out.println("Cliente não encontrado!");
 			}
-			
 		}
 		return clientePedido;
 	}

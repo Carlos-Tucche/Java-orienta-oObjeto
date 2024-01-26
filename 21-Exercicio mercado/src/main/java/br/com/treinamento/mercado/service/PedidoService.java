@@ -9,16 +9,17 @@ import br.com.treinamento.mercado.model.Produto;
 public class PedidoService {
 	
 	/*
-	 * Método para Criar Pedidos
-	 * */
+	 * Método para Criar Pedido
+	 */
 	
 	public static void criarPedido() {
-		System.out.println("\nCriar Pedido: ");
-		System.out.println("-------------------------------\n");
+
+		System.out.print("\n*************************************************\n");
+		System.out.print("                  CRIAR PEDIDO                   \n");
+		System.out.print("*************************************************\n");
 		
 		Cliente clientePedido = ClienteService.getCliente();
-		System.out.println("Cliente: "+ clientePedido.getNome()+"\n");
-		
+		System.out.println("Cliente: "+ clientePedido.getNome());
 		
 		Pedido pedido = new Pedido(clientePedido);
 		
@@ -28,53 +29,53 @@ public class PedidoService {
 			
 			Produto produtoLoop = ProdutoService.getProduto();
 			System.out.println("Produto: "+ produtoLoop.getNomeProduto()+ " R$: "+ produtoLoop.getPreco());
-			
 			System.out.print("Informe a quantidade: ");
 			Integer quantidade = Principal.scanner.nextInt();
 			Principal.scanner.nextLine();
-			
 			ItemPedido itemLoop = new ItemPedido(produtoLoop, quantidade);
 			pedido.adicionarItem(itemLoop);
-			System.out.println("Pedido criado com sucesso. Obrigado!\nSubtotal R$: "+ pedido.getTotalPedido());
-			
 			System.out.print("\nDeseja adicionar mais itens? (S/N): ");
 			resposta = Principal.scanner.nextLine();
-			System.out.println("\n");
+			System.out.println("Subtotal R$: "+ pedido.getTotalPedido());
 			
 		}
 		
 		Principal.pedidosList.add(pedido);
 		
 		System.out.println("Pedido criado com sucesso. Obrigado!\nValor total R$: "+ pedido.getTotalPedido());
-		System.out.println("\nPressione ENTER para continuar");
+		System.out.println("\nPressione ENTER para voltar ao MENU.");
 		Principal.scanner.nextLine();
 	}
 	
 	/*
-	 * Método para listar Pedidos
-	 * */
+	 * Método para listar Pedido
+	 */
 
 	public static void listarPedidos() {
-		System.out.println("Listagem de Produto: ");
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println("NÚMERO PEDIDO \t NOME CLIENTE \t VALOR TOTAL");
-		System.out.println("--------------------------------------------------------------------");
-		
-		System.out.printf("%-10s %-25s %-25s \n","NÚMERO PEDIDO", "NOME CLIENTE", "VALOR TOTAL");
+		System.out.print("\n****************************************************************\n");
+		System.out.print("                      LISTA DE PEDIDOS                          \n");
+		System.out.print("****************************************************************\n");
+		System.out.print("----------------------------------------------------------------\n");
+		System.out.printf("%-10s %-25s %-25s \n","NÚMERO", "NOME", "VALOR TOTAL");
+		System.out.print("-----------------------------------------------------------------\n");
 		
 		/*Principal.pedidosList.forEach(p-> {
 		System.out.printf("%-10s %-25s %-25s \n",p.getNumero(),p.getCliente(),p.getTotalPedido();
 		});*/
+		
 		for(Pedido pedido: Principal.pedidosList){
 			System.out.printf("%-10s %-25s %-25s \n",pedido.getNumero(),pedido.getCliente().getNome(),pedido.getTotalPedido());
 			};
-		
-		System.out.println("Fim da lista.\nPrecione enter para continuar.");
+
+		System.out.print("-----------------------------------------------------------------\n");
+		System.out.println("Fim da lista.\nPrecione enter para voltar ao MENU.");
 		Principal.scanner.nextLine();
-		System.out.println("--------------------------------------------------------------------");
 		
-		MercadoSevice.limparTela();
 	}
+	
+	/*
+	 * Método para Pegar Pedido
+	 */
 
 	public static Pedido getPedido() {
 		Pedido buscaPedido = null;
@@ -92,33 +93,40 @@ public class PedidoService {
 			if(buscaPedido!=null) {
 				pedidovalido = true;
 			}else {
-				System.out.println("Erro: Pedido não econtrado");
+				System.out.println("Erro: Pedido não encontrado!");
 			}
 		}
 		return buscaPedido;
 	}
+	
+	/*
+	 * Método para Detalhar Pedido
+	 */
 
 	public static void detalharPedido() {
 		Pedido pedido = getPedido();
-	
-		System.out.println("PEDIDO nº " + pedido.getNumero());
-		System.out.println("--------------------------------------------");  
 		
+		System.out.print("\n****************************************************************\n");
+		System.out.print("                     DETALHES DO PEDIDO                          \n");
+		System.out.print("****************************************************************\n");
+		System.out.print("-----------------------------------------\n");
+		System.out.println("PEDIDO nº " + pedido.getNumero()+"                             |");
+		System.out.print("-----------------------------------------\n");
 		System.out.println("CLIENTE: "+ pedido.getCliente().getNome());
 		System.out.println("VALOR TOTAL : R$ "+ pedido.getTotalPedido());
-		System.out.println("ITENS DO PEDIDO: ");
+		System.out.println("ITENS DO PEDIDO:");
 		System.out.println("--------------------------------------------------------------------------------------------------");
-		System.out.printf("%-10s %-30s %-20s %-20s %-20s", "NÚMERO PEDIDO", "PRODUTO", "VALOR UNIDADE", "QTD.", "VALOR TOTAL");
-		System.out.println("--------------------------------------------------------------------------------------------------");
+		System.out.printf("%-10s %-20s %-20s %-10s %-20s", "NÚMERO", "PRODUTO", "VALOR UNIDADE", "QTD.", "VALOR TOTAL");
+		System.out.println("\n--------------------------------------------------------------------------------------------------");
 		 
 		int i = 1;
 		for(ItemPedido item : pedido.getItensPedidos()) {
-			System.out.printf("%-10s %-30s %-20s %-20s %-20s", i, item.getProduto().getNomeProduto(), item.getValorUnitario(), item.getQuantidade(), item.getValorTotal());
+			System.out.printf("%-10s %-20s %-20s %-10s %-20s\n", i, item.getProduto().getNomeProduto(), item.getValorUnitario(), item.getQuantidade(), item.getValorTotal());
 			i++;
 		 }
 		 
 		 System.out.println("--------------------------------------------------------------------------------------------------");
-		 System.out.println("Fim do Pedido.\nPressione Enter para retornar...");
+		 System.out.println("Fim do Pedido.\nPressione Enter para voltar ao MENU.");
 		 Principal.scanner.nextLine();
 	}
 

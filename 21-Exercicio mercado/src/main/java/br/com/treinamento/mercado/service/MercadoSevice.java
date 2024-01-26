@@ -13,7 +13,7 @@ public class MercadoSevice {
 	 * */
 	
 	public static void montarMenu() {
-		System.out.print("*************************************************\n");
+		System.out.print("\n*************************************************\n");
 		System.out.println("    SISTEMA DE COMPRAS - Selecione uma opção:");
 		System.out.print("*************************************************\n");
 		System.out.print("_____________________________\n                             |");
@@ -46,12 +46,12 @@ public class MercadoSevice {
 		Integer codigo = null;
 			while (codigo == null) {
 				try {
-					System.out.print("\nDigite o Codigo do "+nome+": ");
+					System.out.print("\nDigite o Código do "+nome+": ");
 					codigo = Principal.scanner.nextInt();
 					Principal.scanner.nextLine();
 					
 				} catch (Exception e) {
-					System.out.println("Codigo invalido! Digite um número inteiro.");
+					System.out.println("Código invalido! Digite um número inteiro.");
 					Principal.scanner.nextLine();
 				}
 		}

@@ -9,41 +9,38 @@ import lombok.ToString;
 public class ProdutoService {
 	
 	/*
-	 * Método para validar e cadatrar Produtos
-	 * */
+	 * Método para validar e cadastrar Produto
+	 */
 
 	public static void cadastrarProduto() {
 		
-		String resposta = "S";
+			System.out.print("\n*************************************************\n");
+			System.out.print("             CADASTRO DE PRODUTOS                \n");
+			System.out.print("*************************************************\n");
 
-		while (resposta.equalsIgnoreCase("S")) {
-			System.out.println("Cadastro de Produto: ");
-			System.out.println("-------------------------------");
+			String resposta = "S";
+
+			while (resposta.equalsIgnoreCase("S")) {
 			
 			//Método Verificador Cliente.
 			Integer codigo = verificarProduto();
 			
 			System.out.print("Nome: ");
 			String nome = Principal.scanner.nextLine();
-					
 			System.out.print("Preço: ");
 			String precoString = Principal.scanner.nextLine().replace(",",".");
 			BigDecimal preco = new BigDecimal(precoString);
-			
 			Principal.produtoList.add(new Produto(codigo, nome, preco));
 			System.out.print("\n");
-			
 			System.out.print("Produto cadastrado com sucesso.\nDeseja adicionar mais produtos? (S/N): ");
 			resposta = Principal.scanner.nextLine();
-			System.out.println("\n");
 
-			MercadoSevice.limparTela();
 		}
 	}
 	
 	/*
-	 * Método para Verificar Produtos
-	 * */
+	 * Método para Verificar Produto
+	 */
 
 	public static Integer verificarProduto() {
 		boolean codigoValido = false;
@@ -70,31 +67,30 @@ public class ProdutoService {
 	}
 	
 	/*
-	 * Método para listar Produtos
-	 * */
+	 * Método para listar Produto
+	 */
 	 
 	public static void listarProduto() {
-		System.out.println("Listagem de Produto: ");
-		System.out.println("\n\n         -------------------------------");
-		System.out.println("Codigo \t Nome Produto \t Preço");
-		System.out.println("             -------------------------------");
-		
-		System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "Preço");
+		System.out.print("\n****************************************************************\n");
+		System.out.print("                     LISTA DE PRODUTOS                          \n");
+		System.out.print("****************************************************************\n");
+		System.out.print("----------------------------------------------------------------\n");
+		System.out.printf("%-10s %-25s %-25s \n","CÓDIGO", "NOME", "VALOR");
+		System.out.print("-----------------------------------------------------------------\n");
 		
 		Principal.produtoList.forEach(p-> {
 		System.out.printf("%-10s %-25s %-25s \n",p.getCodigo(),p.getNomeProduto(),p.getPreco());
 		});
 		
-		System.out.println("Fim da lista.\nPrecione enter para continuar.");
+		System.out.print("-----------------------------------------------------------------\n");
+		System.out.println("Fim da lista.\nPrecione enter para voltar ao MENU.");
 		Principal.scanner.nextLine();
-		System.out.println("-------------------------------");
 		
-		MercadoSevice.limparTela();
 	}
 
 	/*
 	 * Método para buscar Produtos em criar pedidos.
-	 * */
+	 */
 	
 	public static Produto getProduto() {
 		Produto produtoPedido = null;
