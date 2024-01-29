@@ -41,6 +41,19 @@ public class Principal {
 				break;
 			}
 			
+			case 4: {
+				
+				produtoService.excluirProdutos();
+				
+				break;
+			}
+			case 5: {
+				
+				produtoService.atualizarProdutos();
+				
+				break;
+			}
+			
 			default:
 				System.out.println("Opção invalida!");
 			}

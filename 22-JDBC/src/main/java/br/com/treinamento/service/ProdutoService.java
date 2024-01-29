@@ -3,6 +3,7 @@ package br.com.treinamento.service;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import br.com.treinamento.Dao.ProdutoDao;
 import br.com.treinamento.jdbc.Principal;
@@ -15,6 +16,7 @@ public class ProdutoService {
 	 */
 
 	public void cadastrarProduto() {
+		
 		System.out.println("Cadastrar Produto.\n");
 		
 		System.out.print("Informe o nome do produto: ");
@@ -64,7 +66,7 @@ public class ProdutoService {
 		 System.out.printf("\n%-10s %-25s %-25s \n","Codigo", "Nome","Valor");
 		 System.out.print("-----------------------------------------------------------------\n");
 			
-	 	System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "Valor");
+	 	 System.out.printf("%-10s %-25s %-25s \n","Codigo", "Nome", "Valor");
 		 
 		 for(Produto produto : produtos) {
 			 System.out.printf("\n%-10s %-25s %-25s \n",produto.getId(), produto.getNome(), produto.getPreco());
@@ -74,7 +76,7 @@ public class ProdutoService {
 		 Principal.scanner.nextLine();
 	}
 
-	public void visualizarProdutos() {
+	public void visualizarProdutos() throws SQLException {
 		
 		ProdutoDao produtoDao = new ProdutoDao();
 		
@@ -84,12 +86,83 @@ public class ProdutoService {
 		Integer codigo = Principal.scanner.nextInt();
 		Principal.scanner.nextLine();
 		
-		ProdutoDao produto = produto.buscarPorId(codigo);
+		Optional<Produto> produtoOptional= produtoDao.buscarPorId(codigo);
 		
-		System.out.println("Nome do produto: "+produto.getNome());
-		System.out.println("Nome do produto: "+produto.getPreco());
+		if(produtoOptional.isEmpty()) {
+			System.out.println("Produto não encontrado");
+		}else {
+			Produto produto = produtoOptional.get();
+			System.out.println("Nome do produto: "+produto.getNome());
+			System.out.println("Nome do produto: "+produto.getPreco());
+		}
 		
 		System.out.println("Fim da lista. \nPressione ENTER para voltar ao MENU.");
+		Principal.scanner.nextLine();
+	}
+
+	public void excluirProdutos() throws SQLException {
+		
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		System.out.println("Excluir Produto");
+		
+		System.out.println("Informe o codigo do produto: ");
+		Integer codigo = Principal.scanner.nextInt();
+		Principal.scanner.nextLine();
+		
+		Optional<Produto> produtoOptional= produtoDao.buscarPorId(codigo);
+		
+		if(produtoOptional.isEmpty()) {
+			System.out.println("Produto não encontrado");
+		}else {
+			Produto produto = produtoOptional.get();
+			System.out.print("Deseja realmente excluir o produto: "+produto.getNome()+"? (S/N)");
+			String confirmacao = Principal.scanner.nextLine();
+			
+			if(confirmacao.equalsIgnoreCase("S")) {
+				produtoDao.excluir(codigo);
+				System.out.println("Produto excluido com sucesso.");
+			}else {
+				System.out.println("Eclusão cancelada");
+			}
+			
+		}
+		
+		System.out.println("Pressione ENTER para voltar ao MENU.");
+		Principal.scanner.nextLine();
+	}
+
+	public void atualizarProdutos() throws SQLException {
+		
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		System.out.println("Atualizar Produto");
+		
+		System.out.println("Informe o codigo do produto: ");
+		Integer codigo = Principal.scanner.nextInt();
+		Principal.scanner.nextLine();
+		
+		Optional<Produto> produtoOptional= produtoDao.buscarPorId(codigo);
+		
+		if(produtoOptional.isEmpty()) {
+			System.out.println("Produto não encontrado");
+		}else {
+			Produto produto = produtoOptional.get();
+			
+			System.out.print("Informe o nome do produto: ");
+			String nome = Principal.scanner.nextLine();
+			produto.setNome(nome);
+			
+			System.out.print("Informe o valor: ");
+			BigDecimal preco = Principal.scanner.nextBigDecimal();
+			Principal.scanner.nextLine();
+			produto.setPreco(preco);
+			
+			produtoDao.atualizar(produto);
+			System.out.println("Produto cadastrado com sucesso.");
+			
+			}
+		System.out.println("Pressione ENTER para voltar ao MENU.");
 		Principal.scanner.nextLine();
 	}
 }

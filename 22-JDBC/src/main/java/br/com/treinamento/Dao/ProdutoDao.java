@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import br.com.treinamento.factory.ConnectFactory;
 import br.com.treinamento.model.Produto;
@@ -57,15 +58,70 @@ public class ProdutoDao {
 		return produtoList;
 	}
 
-	public ProdutoDao buscarPorId(Integer codigo) throws SQLException {
+	public Optional<Produto>  buscarPorId(Integer codigo) throws SQLException {
 		
 		ConnectFactory factory = new ConnectFactory();
 		Connection connection = factory.abreConexao();
 		
-		//String sqlbusca= "SELECT id_produto, nome, preco FROM tb_produto";
+		String sqlbuscarPorId= "SELECT id_produto, nome, preco FROM tb_produto WHERE id_produto = ?";
 		
+		PreparedStatement pstm = connection.prepareStatement(sqlbuscarPorId);
+		pstm.setInt(1, codigo);
+		pstm.execute();
 		
-		return null;
+		ResultSet rst = pstm.getResultSet();
+		
+		Optional<Produto> produtoOptional = Optional.empty();
+		
+		if(rst.next()) {
+			Produto produto = new Produto();
+			produto.setId(rst.getInt("id_produto"));
+			produto.setNome(rst.getString("nome"));
+			produto.setPreco(rst.getBigDecimal("preco"));
+			
+			produtoOptional = Optional.of(produto);
+		}
+		
+		rst.close();
+		pstm.close();
+		connection.close();
+		
+		return produtoOptional;
+	}
+
+	public void excluir(Integer codigo) throws SQLException {
+		
+		ConnectFactory factory = new ConnectFactory();
+		Connection connection = factory.abreConexao();
+		
+		String sqlDeleta = "DELETE FROM tb_produto WHERE id_produto = ?";
+		
+		//PreparedStartement para evitar o SQL Injection 
+		PreparedStatement pstm = connection.prepareStatement(sqlDeleta);
+		pstm.setInt(1, codigo);
+		
+		pstm.execute();
+		pstm.close();
+		connection.close();
+	}
+
+	public void atualizar(Produto produto) throws SQLException {
+		
+		ConnectFactory factory = new ConnectFactory();
+		Connection connection = factory.abreConexao();
+		
+		String sqlAtualiza = "UPDATE tb_produto set nome = ? , preco = ? WHERE id_produto =?";
+		
+		//PreparedStartement para evitar o SQL Injection 
+		PreparedStatement pstm = connection.prepareStatement(sqlAtualiza);
+		pstm.setString(1, produto.getNome());
+		pstm.setBigDecimal(2, produto.getPreco());
+		pstm.setInt(3, produto.getId());
+		
+		pstm.execute();
+		pstm.close();
+		connection.close();
+		
 	}
 	
 }
