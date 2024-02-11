@@ -2,6 +2,7 @@ package br.com.treinamento.compras.app;
 
 import java.util.Scanner;
 
+import br.com.treinamento.compras.service.ProdutoService;
 import br.com.treinamento.compras.service.SistemaService;
 
 public class App {
@@ -10,11 +11,12 @@ public class App {
 
 	public static void main(String[] args) {
 		
+		ProdutoService produtoService = new ProdutoService();
+		
 		while (true) {
 			
 			SistemaService.getMenu();
 			
-
 			System.out.println("\n\nDigite sua Opção: ");
 			Integer opcao = scanner.nextInt();
 			scanner.nextLine();
@@ -32,9 +34,7 @@ public class App {
 			
 			case 1: {
 				
-				scanner.close();
-				System.out.println("Obrigado!");
-				System.exit(0);
+				produtoService.getMenuProduto();
 				
 				break;
 			

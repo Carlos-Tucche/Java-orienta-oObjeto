@@ -7,8 +7,7 @@ import lombok.Setter;
 
 public class Produto {
 	
-	public Produto(Integer id, String nomeProduto, Integer estoque, BigDecimal valor) {
-		this.id = id;
+	public Produto(String nomeProduto, Integer estoque, BigDecimal valor) {
 		this.nomeProduto = nomeProduto;
 		this.estoque = estoque;
 		this.valor = valor;

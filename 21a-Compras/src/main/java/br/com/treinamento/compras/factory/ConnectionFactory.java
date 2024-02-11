@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 	
-	public Connection AbreConexão() throws SQLException {
+	public Connection abreConexão() throws SQLException {
 		
-		return DriverManager.getConnection("jdbc:postgresql://localhost/jdbc","root","123456");
-		
+		//return DriverManager.getConnection("jdbc:postgresql://localhost/compras","root","123456");
+		return DriverManager.getConnection("jdbc:postgresql://localhost/compras","root","123456");
 	}
 
 }

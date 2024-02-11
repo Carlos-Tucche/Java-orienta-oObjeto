@@ -13,13 +13,14 @@ public class TestaConexao {
 		
 		System.out.println("Conectando com o banco...");
 		Connection connection = connectFactory.abreConexao();
-		System.out.println("Abriu a conexão");
+		System.out.println("Abriu a conexão 1");
 		
 		System.out.println("\n");
 		
 		System.out.println("fechando a conexão...");
 		connection.close();
-		System.out.println("Conexão fechada.");
+		System.out.println("Conexão 1 fechada.");
 	}
 
 }
+	

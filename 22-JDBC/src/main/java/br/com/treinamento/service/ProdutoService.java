@@ -12,7 +12,7 @@ import br.com.treinamento.model.Produto;
 public class ProdutoService {
 	
 	/*
-	 * Cadastrar Cliente
+	 * Cadastrar Produto
 	 */
 
 	public void cadastrarProduto() {
