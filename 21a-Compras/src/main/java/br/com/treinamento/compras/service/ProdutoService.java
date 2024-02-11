@@ -9,8 +9,6 @@ import br.com.treinamento.compras.model.Produto;
 
 public class ProdutoService {
 	
-	
-	
 	public void getMenuProduto() {
 			
 		System.out.print("\n*************************************************\n");
@@ -27,13 +25,19 @@ public class ProdutoService {
 			
 		while (true) {
 			
-			SistemaService.getMenu();
-			
-			System.out.println("\n\nDigite sua Opção: ");
+			System.out.print("\n\nDigite sua Opção: ");
 			Integer opcao = App.scanner.nextInt();
 			App.scanner.nextLine();
 			
 			switch (opcao) {
+			
+			case 0: {
+				
+				SistemaService.metodoSair();
+				
+				break;
+				}
+			
 			case 1: {
 				
 				cadastrarProduto();
@@ -48,16 +52,16 @@ public class ProdutoService {
 
 	public void cadastrarProduto() {
 		
-		System.out.println("CADASTRA PRODUTO.");
+		System.out.println("CADASTRAR PRODUTO.");
 		
-		System.out.println("Informe o nome do produto: ");
+		System.out.print("Informe o nome do produto: ");
 		String nomeProduto = App.scanner.nextLine();
 		
-		System.out.println("Informe o valor do produto: ");
+		System.out.print("Informe o valor do produto: ");
 		BigDecimal valor = App.scanner.nextBigDecimal();
 		App.scanner.nextLine();
 		
-		System.out.println("Informe a quantidade entregue ao estoque: ");
+		System.out.print("Informe a quantidade entregue ao estoque: ");
 		Integer estoque = App.scanner.nextInt();
 		App.scanner.nextLine();
 		

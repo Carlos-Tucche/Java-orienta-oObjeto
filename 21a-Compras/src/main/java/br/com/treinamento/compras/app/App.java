@@ -16,23 +16,19 @@ public class App {
 		while (true) {
 			
 			SistemaService.getMenu();
-			
-			System.out.println("\n\nDigite sua Opção: ");
+			System.out.print("\n\nDigite sua Opção: ");
 			Integer opcao = scanner.nextInt();
 			scanner.nextLine();
 			
 			switch (opcao) {
-			
 			case 0: {
 				
-				scanner.close();
-				System.out.println("Obrigado!");
-				System.exit(0);
+				SistemaService.metodoSair();
 				
 				break;
 				}
 			
-			case 1: {
+			case 2: {
 				
 				produtoService.getMenuProduto();
 				
