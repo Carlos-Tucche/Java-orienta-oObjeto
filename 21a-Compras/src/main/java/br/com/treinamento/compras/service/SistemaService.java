@@ -31,30 +31,5 @@ public class SistemaService {
 		System.out.println("Obrigado!");
 		System.exit(0);
 	}
-	
-	/*
-	 * Metodo VALIDADOR de codigo.
-	 */
-	
-	public static Integer validarCodigo(String nome ) {
-		Integer codigo = null;
-			while(codigo == null) {
-				try {
-					System.out.println("Digite CÓDIGO do "+nome+": ");
-					codigo = App.scanner.nextInt();
-					App.scanner.nextLine();
-					
-				} catch (Exception e) {
-					System.out.println("CÓDIGO inválido! Digite um número interio: ");
-				}
-			
-		}
-		return codigo;
-	}
-	
-	
-	
-	
-	
 		
 }

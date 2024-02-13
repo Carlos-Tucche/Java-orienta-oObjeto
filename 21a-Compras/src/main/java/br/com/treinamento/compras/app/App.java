@@ -1,5 +1,6 @@
 package br.com.treinamento.compras.app;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.treinamento.compras.service.ProdutoService;
@@ -9,7 +10,7 @@ public class App {
 	
 	public static Scanner scanner = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 		ProdutoService produtoService = new ProdutoService();
 		
