@@ -1,5 +1,7 @@
 package br.com.treinamento.compras.service;
 
+import java.util.InputMismatchException;
+
 import br.com.treinamento.compras.app.App;
 
 public class SistemaService {
@@ -31,20 +33,25 @@ public class SistemaService {
 		System.out.println("Obrigado!");
 		System.exit(0);
 	}
+	
+	/*
+	 * Metodo Validar opção.
+	 */
 
 	public static Integer validarcodigo(String nome) {
-		Integer opcao = null;
-			while (opcao == null) {
+		Integer codigo = null;
+			while (codigo == null) {
 				try {
-					System.out.print("\nDigite o Código do "+nome+": ");
-					opcao = App.scanner.nextInt();
-					App.scanner.nextLine();
+					System.out.print("\n\nDigite uma opção do "+nome+": ");
+					codigo = App.scanner.nextInt();
+					//App.scanner.nextLine();
 					
-				} catch (Exception e) {
-					System.out.println("Código invalido! Digite um número inteiro.");
+				} catch (InputMismatchException e) {
+					System.out.println("Opçõa invalida!\nPrecione ENTER para voltar ao MENU\n");
 					App.scanner.nextLine();
 				}
+				getMenu();
 		}
-		return opcao;
+		return codigo;
 	}
 }

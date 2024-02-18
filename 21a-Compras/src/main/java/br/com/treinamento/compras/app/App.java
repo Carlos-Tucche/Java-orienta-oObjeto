@@ -13,14 +13,19 @@ public class App {
 
 	public static void main(String[] args) throws SQLException {
 		
+		/*SistemaService.montaMenu();
+		System.out.print("\nInforme a opção:");
+		Integer opcao = scanner.nextInt();
+		scanner.nextLine();*/
 		
 		while (true) {
 			
 			SistemaService.getMenu();
-			System.out.print("\n\nDigite sua Opção: ");
-			Integer opcao = scanner.nextInt();
-			scanner.nextLine();
-			
+
+			Integer opcao = SistemaService.validarcodigo("MENU");
+			opcao = scanner.nextInt();
+			//scanner.nextLine();
+ 			
 			switch (opcao) {
 			case 0: {
 				
