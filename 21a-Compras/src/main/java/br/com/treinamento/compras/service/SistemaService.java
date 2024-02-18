@@ -31,5 +31,20 @@ public class SistemaService {
 		System.out.println("Obrigado!");
 		System.exit(0);
 	}
-		
+
+	public static Integer validarcodigo(String nome) {
+		Integer opcao = null;
+			while (opcao == null) {
+				try {
+					System.out.print("\nDigite o Código do "+nome+": ");
+					opcao = App.scanner.nextInt();
+					App.scanner.nextLine();
+					
+				} catch (Exception e) {
+					System.out.println("Código invalido! Digite um número inteiro.");
+					App.scanner.nextLine();
+				}
+		}
+		return opcao;
+	}
 }
