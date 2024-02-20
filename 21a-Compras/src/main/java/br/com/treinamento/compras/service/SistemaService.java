@@ -38,19 +38,17 @@ public class SistemaService {
 	 * Metodo Validar opção.
 	 */
 
-	public static Integer validarcodigo(String nome) {
+	public static Integer validarcodigo() {
 		Integer codigo = null;
 			while (codigo == null) {
 				try {
-					System.out.print("\n\nDigite uma opção do "+nome+": ");
 					codigo = App.scanner.nextInt();
-					//App.scanner.nextLine();
 					
 				} catch (InputMismatchException e) {
-					System.out.println("Opçõa invalida!\nPrecione ENTER para voltar ao MENU\n");
+					System.out.println("Opçõa invalida! Digite um NÚMERO do MENU.");
 					App.scanner.nextLine();
 				}
-				getMenu();
+				
 		}
 		return codigo;
 	}

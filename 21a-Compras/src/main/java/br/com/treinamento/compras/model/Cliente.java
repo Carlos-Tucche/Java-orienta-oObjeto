@@ -5,19 +5,18 @@ import lombok.Setter;
 
 public class Cliente {
 
-	public Cliente(Integer id, String nome, String cidade, String estado, String email) {
-		this.id = id;
-		this.nome = nome;
+	public Cliente(String nomeCliente, String cidade, String estado, String email) {
+		this.nomeCliente = nomeCliente;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.email = email;
 	}
 	
 	@Getter @Setter
-	private Integer id;
+	private Integer idCliente;
 	
 	@Getter @Setter
-	private String nome;
+	private String nomeCliente;
 	
 	@Getter @Setter
 	private String cidade;

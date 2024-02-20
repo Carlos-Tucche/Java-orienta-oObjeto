@@ -30,7 +30,7 @@ public class ProdutoService {
 		while (true) {
 			
 			System.out.print("\n\nDigite sua Opção: ");
-			Integer opcao = App.scanner.nextInt();
+			Integer opcao = SistemaService.validarcodigo(); 
 			App.scanner.nextLine();
 			
 			switch (opcao) {
@@ -96,9 +96,9 @@ public class ProdutoService {
 		while(resposta .equalsIgnoreCase("S")) {
 		
 			System.out.println("-------------------------------------------------");
-			System.out.print("Informe o nome do produto: ");
+			System.out.print("Informe o nome do PRODUTO: ");
 			String nomeProduto = App.scanner.nextLine();
-			System.out.print("Informe o valor do produto: ");
+			System.out.print("Informe o valor do PRODUTO: ");
 			String valorString = App.scanner.nextLine().replace(",",".");
 			BigDecimal valor = new BigDecimal(valorString);
 			System.out.print("Informe a quantidade entregue ao estoque: ");

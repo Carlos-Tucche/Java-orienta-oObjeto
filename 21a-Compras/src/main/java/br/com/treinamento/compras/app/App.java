@@ -10,21 +10,15 @@ import br.com.treinamento.compras.service.SistemaService;
 public class App {
 	
 	public static Scanner scanner = new Scanner(System.in);
-
+	
 	public static void main(String[] args) throws SQLException {
-		
-		/*SistemaService.montaMenu();
-		System.out.print("\nInforme a opção:");
-		Integer opcao = scanner.nextInt();
-		scanner.nextLine();*/
 		
 		while (true) {
 			
 			SistemaService.getMenu();
-
-			Integer opcao = SistemaService.validarcodigo("MENU");
-			opcao = scanner.nextInt();
-			//scanner.nextLine();
+			
+			System.out.print("\nInforme uma opção do MENU:");
+			Integer opcao = SistemaService.validarcodigo();
  			
 			switch (opcao) {
 			case 0: {
