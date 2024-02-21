@@ -17,7 +17,7 @@ public class App {
 			
 			SistemaService.getMenu();
 			
-			System.out.print("\nInforme uma opção do MENU:");
+			System.out.print("\nInforme uma opção do MENU: ");
 			Integer opcao = SistemaService.validarcodigo();
  			
 			switch (opcao) {

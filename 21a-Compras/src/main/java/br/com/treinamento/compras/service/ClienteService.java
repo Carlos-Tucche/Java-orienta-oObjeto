@@ -86,6 +86,7 @@ public class ClienteService {
 	/*Metodo para CADASTRAR CLIENTE*/
 	
 	private static void cadastrarCliente() throws SQLException {
+		
 		System.out.print("\n\n*************************************************\n");
 		System.out.print("             CADASTRO DE CLIENTES                \n");
 		System.out.print("*************************************************\n\n");
@@ -98,7 +99,7 @@ public class ClienteService {
 			String nomeCliente = App.scanner.nextLine();
 			System.out.print("Informe a cidade do CLIENTE: ");
 			String cidade = App.scanner.nextLine();
-			System.out.print("Informe o estado do CLIENTE: ");
+			System.out.print("Informe a sigla do estado do CLIENTE: ");
 			String estado =  App.scanner.nextLine();
 			System.out.print("Infomer o email do CLIENTE: ");
 			String email = App.scanner.nextLine();
@@ -107,12 +108,12 @@ public class ClienteService {
 			
 			try {
 				salvarCliente(cliente);
-				System.out.println("Cliente cadastrado com sucesso! \nDeseja cadastrar outro cliente? S/N");
+				System.out.println("Cliente cadastrado com sucesso! \nDeseja cadastrar outro cliente? S/N \n");
 				resposta = App.scanner.nextLine();
 				
 			} catch (Exception e) {
 				System.out.println("Erro ao cadastrar o CLIENTE:"+e.getMessage());
-				System.out.print("\nProduto cadastrado com sucesso!\nPressione ENTER para continuar.");
+				System.out.print("\nCliente cadastrado com sucesso!\nPressione ENTER para continuar.");
 			}
 			getMenuCliente();
 		}
@@ -141,33 +142,29 @@ public class ClienteService {
 	 	for(Cliente cliente : clientes) {
 	 		System.out.printf("%-5s %-20s %-10s %-5s %-20s\n", cliente.getIdCliente(), cliente.getNomeCliente(), cliente.getCidade(), cliente.getEstado(), cliente.getEmail());
 		 	}
-		 	System.out.println("\nFim da lista. \nPressione ENTER para voltar ao menu PRODUTO.");
+		 	System.out.println("\nFim da lista. \nPressione ENTER para voltar ao menu CLIENTE.");
 		 	App.scanner.nextLine();
 	 	getMenuCliente();
 		
 	}
 	/*Metodo para VISUALIZAR CLIENTE*/
-	private static void visualizarCliente() {
-		// TODO Auto-generated method stub
-		
-	}
-	/*Metodo para EDITAR CLIENTE*/
 	
-	private static void EditarCliente() throws SQLException {
+	private static void visualizarCliente() throws SQLException {
+		
 		ClienteDao clienteDao = new ClienteDao();
 		
 		System.out.print("****************************************************************\n");
 		System.out.print("                   DETALHAR CLIENTE                \n");
 		System.out.print("****************************************************************\n\n");
-		System.out.print("----------------------------------------------------------------\n");
-		System.out.println("Informe o código do cliente : ");
+		System.out.print("----------------------------------------------------------------\n\n");
+		System.out.print("Informe o código do cliente: ");
 		Integer codigo = App.scanner.nextInt();
 		App.scanner.nextLine();
 		
 		Optional<Cliente> clienteOptional = clienteDao.buscarPorId(codigo);
 		
 		if(clienteOptional.isEmpty()) {
-			System.out.println("Produto não encontrado.");
+			System.out.println("Cliente não encontrado.");
 		}else {
 			Cliente  cliente = clienteOptional.get();
 			System.out.println("Nome do cliente: "+ cliente.getNomeCliente());
@@ -175,16 +172,96 @@ public class ClienteService {
 			System.out.println("Estado: "+ cliente.getEstado());
 			System.out.println("E-mail: "+ cliente.getEmail());
 		}
-		
-		System.out.println("Fim da lista. \nPressione ENTER para voltar ao MENU.");
+		System.out.print("\n----------------------------------------------------------------\n");
+		System.out.println("\nFim da lista. \nPressione ENTER para voltar ao menu CLIENTE.");
 		App.scanner.nextLine();
 		getMenuCliente();
 		
 	}
-	/*Metodo para EXCLUIR CLIENTE*/
-	private static void ExcluirCliente() {
-		// TODO Auto-generated method stub
+	/*Metodo para EDITAR CLIENTE*/
+	
+	private static void EditarCliente() throws SQLException {
 		
+		ClienteDao clienteDao = new ClienteDao();
+		
+		System.out.print("****************************************************************\n");
+		System.out.print("                     EDITAR CLIENTE               \n");
+		System.out.print("****************************************************************\n\n");
+		System.out.print("----------------------------------------------------------------\n");
+		
+		String resposta = "S";
+		while(resposta .equalsIgnoreCase("S")) {
+		
+		System.out.println("Informe o CÓDIGO do cliente: ");
+		Integer codigo = App.scanner.nextInt();
+		App.scanner.nextLine();
+		
+		Optional<Cliente> clienteOptional= clienteDao.buscarPorId(codigo);
+		
+		if(clienteOptional.isEmpty()) {
+			System.out.println("Cliente não encontrado");
+		}else {
+			Cliente cliente = clienteOptional.get();
+			System.out.print("Deseja realmente EDITAR o cliente: "+cliente.getNomeCliente()+"? (S/N) \n");
+			String confirmacao = App.scanner.nextLine();
+			
+			if(confirmacao.equalsIgnoreCase("N")) {
+				System.out.println("Edição cancelada!");
+				
+			}else {
+				System.out.print("Informe o novo NOME do cliente: ");
+				String nomeCliente = App.scanner.nextLine();
+				cliente.setNomeCliente(nomeCliente);
+				System.out.print("Informe a nova CIDADE: ");
+				String cidade = App.scanner.nextLine();
+				cliente.setCidade(cidade);
+				System.out.print("Informe  a sigla do novo ESTADO: ");
+				String estado = App.scanner.nextLine();
+				cliente.setEstado(estado);
+				System.out.print("Informe o novo E-MAIL: ");
+				String email = App.scanner.nextLine();
+				cliente.setEmail(email);;
+				clienteDao.Editar(cliente);
+				System.out.print("\nCliente editado com sucesso. \nDeseja EDITAR outro cliente? S/N \n");
+				resposta = App.scanner.nextLine();
+				}
+			}
+		}
+		getMenuCliente();
+		
+	}
+	/*Metodo para EXCLUIR CLIENTE*/
+	
+	private static void ExcluirCliente() throws SQLException {
+
+		ClienteDao clienteDao = new ClienteDao();
+		
+		System.out.print("****************************************************************\n");
+		System.out.print("                     EXCLUIR CLIENTE                \n");
+		System.out.print("****************************************************************\n\n");
+		System.out.print("----------------------------------------------------------------\n");
+		
+		System.out.println("Informe o codigo do cliente: ");
+		Integer codigo = App.scanner.nextInt();
+		App.scanner.nextLine();
+		
+		Optional<Cliente> clienteOptional= clienteDao.buscarPorId(codigo);
+		
+		if(clienteOptional.isEmpty()) {
+			System.out.println("Cliente não encontrado");
+		}else {
+			Cliente cliente = clienteOptional.get();
+			System.out.print("Deseja realmente excluir o cliente: "+cliente.getNomeCliente()+"? (S/N) \n");
+			String confirmacao = App.scanner.nextLine(); 
+			
+			if(confirmacao.equalsIgnoreCase("S")) {
+				clienteDao.excluir(codigo);
+				System.out.println("Produto excluido com sucesso. \nPressione ENTER para voltar ao MENU");
+			}else {
+				System.out.println("Eclusão cancelada \nPressione ENTER para voltar ao MENU.");
+			}
+			App.scanner.nextLine();		
+		}
 	}
 		
 }

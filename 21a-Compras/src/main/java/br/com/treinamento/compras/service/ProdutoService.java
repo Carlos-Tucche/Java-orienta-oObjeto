@@ -157,8 +157,8 @@ public class ProdutoService {
 		System.out.print("****************************************************************\n");
 		System.out.print("                DETALHAR PRODUTO                \n");
 		System.out.print("****************************************************************\n\n");
-		System.out.print("----------------------------------------------------------------\n");
-		System.out.println("Informe o CÓDIGO do produto: ");
+		System.out.print("----------------------------------------------------------------\n\n");
+		System.out.print("Informe o CÓDIGO do produto: ");
 		Integer codigo = App.scanner.nextInt();
 		App.scanner.nextLine();
 		
@@ -172,7 +172,7 @@ public class ProdutoService {
 			System.out.println("Valor do produto: "+produto.getValor());
 			System.out.println("Quantidade em Estoque: "+produto.getEstoque());
 		}
-		
+		System.out.print("\n----------------------------------------------------------------\n");
 		System.out.println("Fim da lista. \nPressione ENTER para voltar ao MENU.");
 		App.scanner.nextLine();
 		getMenuProduto();
@@ -201,21 +201,27 @@ public class ProdutoService {
 			System.out.println("Produto não encontrado");
 		}else {
 			Produto produto = produtoOptional.get();
+			System.out.print("Deseja realmente EDITAR o cliente: "+produto.getNomeProduto()+"? (S/N) \n");
+			String confirmacao = App.scanner.nextLine();
 			
-			System.out.print("Informe o novo NOME do produto: ");
-			String nomeProduto = App.scanner.nextLine();
-			produto.setNomeProduto(nomeProduto);
-			System.out.print("Informe onovo VALOR: ");
-			BigDecimal valor = App.scanner.nextBigDecimal();
-			App.scanner.nextLine();
-			produto.setValor(valor);
-			System.out.print("Informe a nova quantidade no ESTOQUE: ");
-			Integer estoque = App.scanner.nextInt();
-			App.scanner.nextLine();
-			produto.setEstoque(estoque);
-			produtoDao.Editar(produto);
-			System.out.println("\nProduto editado com sucesso. \nDeseja EDITAR outro produto? S/N ");
-			resposta = App.scanner.nextLine();
+			if(confirmacao.equalsIgnoreCase("N")) {
+				System.out.println("Edição cancelada!");
+			}else {
+				System.out.print("Informe o novo NOME do produto: ");
+				String nomeProduto = App.scanner.nextLine();
+				produto.setNomeProduto(nomeProduto);
+				System.out.print("Informe o novo VALOR: ");
+				BigDecimal valor = App.scanner.nextBigDecimal();
+				App.scanner.nextLine();
+				produto.setValor(valor);
+				System.out.print("Informe a nova quantidade no ESTOQUE: ");
+				Integer estoque = App.scanner.nextInt();
+				App.scanner.nextLine();
+				produto.setEstoque(estoque);
+				produtoDao.Editar(produto);
+				System.out.println("\nProduto editado com sucesso. \nDeseja EDITAR outro produto? S/N ");
+				resposta = App.scanner.nextLine();
+				}
 			}
 		}
 		getMenuProduto();

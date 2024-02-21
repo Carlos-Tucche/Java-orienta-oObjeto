@@ -62,6 +62,7 @@ public class ClienteDao {
 		
 		return clienteList;
 	}
+	/*Metodo JDBC para BUSCAR POR ID CLIENTE*/
 
 	public Optional<Cliente> buscarPorId(Integer codigo) throws SQLException {
 		
@@ -94,6 +95,44 @@ public class ClienteDao {
 		connection.close();
 		
 		return clienteOptional;
+	}
+	/*Metodo JDBC para EDITAR CLIENTE*/
+
+	public void Editar(Cliente cliente) throws SQLException {
+		
+		ConnectionFactory factory = new ConnectionFactory();
+		Connection connection = factory.abreConexão();
+		
+		String sqlEditar = "UPDATE tb_cliente set nome_cliente = ? , cidade = ?, estado = ?, email = ? WHERE id_cliente = ?";
+		
+		//PreparedStartement para evitar o SQL Injection 
+		PreparedStatement pstm = connection.prepareStatement(sqlEditar);
+		pstm.setString(1, cliente.getNomeCliente());
+		pstm.setString(2, cliente.getCidade());
+		pstm.setString(3, cliente.getEstado());
+		pstm.setString(4, cliente.getEmail());
+		pstm.setInt(5, cliente.getIdCliente());
+		
+		pstm.execute();
+		pstm.close();
+		connection.close();
+		
+	}
+
+	public void excluir(Integer codigo) throws SQLException {
+		
+		ConnectionFactory factory = new ConnectionFactory();
+		Connection connection = factory.abreConexão();
+		
+		String sqlDeleta = "DELETE FROM tb_cliente WHERE id_cliente = ?";
+		
+		//PreparedStartement para evitar o SQL Injection 
+		PreparedStatement pstm = connection.prepareStatement(sqlDeleta);
+		pstm.setInt(1, codigo);
+		
+		pstm.execute();
+		pstm.close();
+		connection.close();		
 	}
 
 }
