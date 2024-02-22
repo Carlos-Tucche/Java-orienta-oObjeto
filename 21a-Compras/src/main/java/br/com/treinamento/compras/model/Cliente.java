@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Cliente {
+	
+	public Cliente() {
+	}
 
 	public Cliente(String nomeCliente, String cidade, String estado, String email) {
 		this.nomeCliente = nomeCliente;

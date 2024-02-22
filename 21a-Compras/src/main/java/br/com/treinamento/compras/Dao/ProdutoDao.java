@@ -131,4 +131,37 @@ public class ProdutoDao {
 		connection.close();
 	}
 
+	public Optional<Produto> buscarPorNome(String nome) throws SQLException {
+		
+		ConnectionFactory factory = new ConnectionFactory();
+		Connection connection = factory.abreConexão();
+		
+		String sqlbuscarPorId= "SELECT id_produto, nome_produto, valor, estoque FROM tb_produto WHERE id_nome = ?";
+		
+		PreparedStatement pstm = connection.prepareStatement(sqlbuscarPorId);
+		pstm.setString(2, nome);
+		pstm.execute();
+		
+		ResultSet rst = pstm.getResultSet();
+		
+		Optional<Produto> produtoOptional = Optional.empty();
+		
+		if (rst.next()) {
+			Produto produto = new Produto();
+			produto.setId(rst.getInt("id_produto"));
+			produto.setNomeProduto(rst.getString("nome_produto"));
+			produto.setValor(rst.getBigDecimal("valor"));
+			produto.setEstoque(rst.getInt("estoque"));
+			
+			produtoOptional = Optional.of(produto);
+		}
+		
+		rst.close();
+		pstm.close();
+		connection.close();
+		
+		return produtoOptional;
+		
+	}
+
 }

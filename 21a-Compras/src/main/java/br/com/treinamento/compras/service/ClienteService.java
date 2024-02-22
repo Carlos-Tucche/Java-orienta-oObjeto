@@ -39,7 +39,7 @@ public class ClienteService {
 				SistemaService.metodoSair();
 				
 				break;
-				}
+			}
 			
 			case 1: {
 				
@@ -61,13 +61,13 @@ public class ClienteService {
 			
 			case 4  : {
 				
-				EditarCliente();
+				editarCliente();
 				break;
 			}
 			
 			case 5  : {
 				
-				ExcluirCliente();
+				excluirCliente();
 				break;
 			}
 			
@@ -180,7 +180,7 @@ public class ClienteService {
 	}
 	/*Metodo para EDITAR CLIENTE*/
 	
-	private static void EditarCliente() throws SQLException {
+	private static void editarCliente() throws SQLException {
 		
 		ClienteDao clienteDao = new ClienteDao();
 		
@@ -232,7 +232,7 @@ public class ClienteService {
 	}
 	/*Metodo para EXCLUIR CLIENTE*/
 	
-	private static void ExcluirCliente() throws SQLException {
+	private static void excluirCliente() throws SQLException {
 
 		ClienteDao clienteDao = new ClienteDao();
 		
@@ -241,7 +241,7 @@ public class ClienteService {
 		System.out.print("****************************************************************\n\n");
 		System.out.print("----------------------------------------------------------------\n");
 		
-		System.out.println("Informe o codigo do cliente: ");
+		System.out.println("Informe o CÓDIGO do cliente: ");
 		Integer codigo = App.scanner.nextInt();
 		App.scanner.nextLine();
 		
@@ -262,6 +262,26 @@ public class ClienteService {
 			}
 			App.scanner.nextLine();		
 		}
+	}
+
+	public static Cliente getCliente() throws SQLException {
+		
+		ClienteDao clienteDao = new ClienteDao();
+
+		System.out.println("Informe o CÓDIGO do cliente: ");
+		Integer codigo = App.scanner.nextInt();
+		App.scanner.nextLine();
+		
+		Optional<Cliente> clienteOptional= clienteDao.buscarPorId(codigo);
+		
+		if(clienteOptional.isEmpty()) {
+			System.out.println("Cliente não encontrado");
+		}else {
+			Cliente cliente = clienteOptional.get();
+			System.out.println("Cliente: "+ cliente.getNomeCliente());
+		}
+		return getCliente();
+
 	}
 		
 }

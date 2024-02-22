@@ -260,5 +260,24 @@ public class ProdutoService {
 		}
 		
 	}
+
+	public static Produto getProduto() throws SQLException {
+		
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		System.out.println("Informe o NOME do produto: ");
+		String nome = App.scanner.nextLine();
+		
+		Optional<Produto> produtoOptional= produtoDao.buscarPorNome(nome);
+		
+		if(produtoOptional.isEmpty()) {
+			System.out.println("Cliente não encontrado");
+		}else {
+			Produto produto = produtoOptional.get();
+			System.out.println("Cliente: "+ produto.getNomeProduto());
+		}
+		
+		return getProduto();
+	}
 	
 }

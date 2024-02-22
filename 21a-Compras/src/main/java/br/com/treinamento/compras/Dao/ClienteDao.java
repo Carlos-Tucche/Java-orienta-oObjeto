@@ -47,7 +47,7 @@ public class ClienteDao {
 		
 		ResultSet rst = pstm.getResultSet();
 		while (rst.next()) {
-			Cliente cliente = new Cliente(sqlLista, sqlLista, sqlLista, sqlLista);
+			Cliente cliente = new Cliente();
 			cliente.setIdCliente(rst.getInt("id_cliente"));
 			cliente.setNomeCliente(rst.getString("nome_cliente"));
 			cliente.setCidade(rst.getString("cidade"));

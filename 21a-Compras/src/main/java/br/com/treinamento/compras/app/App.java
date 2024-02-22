@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.treinamento.compras.service.ClienteService;
+import br.com.treinamento.compras.service.PedidoService;
 import br.com.treinamento.compras.service.ProdutoService;
 import br.com.treinamento.compras.service.SistemaService;
 
@@ -38,6 +39,12 @@ public class App {
 			case 2: {
 				
 				ProdutoService.getMenuProduto();
+				
+				break;
+			}
+			case 3: {
+				
+				PedidoService.getMenuPedido();
 				
 				break;
 			}
