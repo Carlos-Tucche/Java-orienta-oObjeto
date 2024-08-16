@@ -258,26 +258,25 @@ public class ProdutoService {
 			}
 			App.scanner.nextLine();
 		}
-		
 	}
 
-	public static Produto getProduto() throws SQLException {
+	public static Integer getProduto() throws SQLException {
 		
 		ProdutoDao produtoDao = new ProdutoDao();
 		
-		System.out.println("Informe o NOME do produto: ");
-		String nome = App.scanner.nextLine();
+		System.out.println("Informe o CÓDIGO do produto: ");
+		Integer codigo = App.scanner.nextInt();
 		
-		Optional<Produto> produtoOptional= produtoDao.buscarPorNome(nome);
+		Optional<Produto> produtoOptional= produtoDao.buscarPorId(codigo);
 		
 		if(produtoOptional.isEmpty()) {
 			System.out.println("Cliente não encontrado");
 		}else {
 			Produto produto = produtoOptional.get();
-			System.out.println("Cliente: "+ produto.getNomeProduto());
+			System.out.println("Produto: "+produto.getNomeProduto()+" R$: "+ produto.getValor());
 		}
 		
-		return getProduto();
+		return codigo;
 	}
 	
 }

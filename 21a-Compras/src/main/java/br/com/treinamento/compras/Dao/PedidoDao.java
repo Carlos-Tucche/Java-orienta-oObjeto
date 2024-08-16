@@ -17,13 +17,12 @@ public class PedidoDao {
 		ConnectionFactory factory = new ConnectionFactory();
 		Connection connection = factory.abreConexão();
 		
-		String sqlInsere = "INSERT INTO tb_pedido (id_pedido, id_cliente, total_pedido) values (?,?,?)";
+		String sqlInsere = "INSERT INTO tb_pedido (id_cliente, total_pedido) values (?,?)";
 		PreparedStatement pstm = connection.prepareStatement(sqlInsere,java.sql.Statement.RETURN_GENERATED_KEYS);
-		pstm.setInt(1,pedido.getIdPedido());
-		pstm.setInt(2,pedido.getClienteId());
-		pstm.setBigDecimal(3,pedido.getTotalPedido());
-		
+		pstm.setInt(1,pedido.getClientePedido().getIdCliente());
+		pstm.setBigDecimal(2,pedido.getTotalPedido());
 		pstm.execute();
+		
 		pstm.close();
 		connection.close();		
 	}

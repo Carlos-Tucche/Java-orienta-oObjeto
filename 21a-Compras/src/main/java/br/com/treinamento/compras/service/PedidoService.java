@@ -5,7 +5,6 @@ import java.util.List;
 
 import br.com.treinamento.compras.Dao.PedidoDao;
 import br.com.treinamento.compras.app.App;
-import br.com.treinamento.compras.model.Cliente;
 import br.com.treinamento.compras.model.ItemPedido;
 import br.com.treinamento.compras.model.Pedido;
 import br.com.treinamento.compras.model.Produto;
@@ -93,20 +92,20 @@ public class PedidoService {
 		System.out.print("*************************************************\n\n");
 		System.out.println("-------------------------------------------------");
 		
-		Cliente clientePedido = ClienteService.getCliente();
+		Integer clientePedido =  ClienteService.getCliente();
 		
-		Pedido pedido = new Pedido(clientePedido);
+		Pedido pedido = new Pedido();
 		
 		String resposta = "S";
 		while(resposta .equalsIgnoreCase("S")) {
 		
-			Produto produto = ProdutoService.getProduto();
-			System.out.println("Produto: "+produto.getNomeProduto()+" R$: "+ produto.getValor());
+			Integer produto = ProdutoService.getProduto();
+			
 			System.out.print("Informe a quantidade: ");	
 			Integer quantidade = App.scanner.nextInt();
 			App.scanner.nextLine();
-			ItemPedido item = new ItemPedido(produto, quantidade);
-			pedido.adcionarItem(item);
+			//ItemPedido item = new ItemPedido(produto, quantidade);
+			//pedido.adcionarItem(item);
 			System.out.print("\nDeseja adicionar mais itens? S/N: ");
 			resposta = App.scanner.nextLine();
 			System.out.println("Subtotal R$: "+ pedido.getTotalPedido());

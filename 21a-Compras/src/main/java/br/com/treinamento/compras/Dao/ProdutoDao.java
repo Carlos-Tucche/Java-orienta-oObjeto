@@ -136,9 +136,9 @@ public class ProdutoDao {
 		ConnectionFactory factory = new ConnectionFactory();
 		Connection connection = factory.abreConexão();
 		
-		String sqlbuscarPorId= "SELECT id_produto, nome_produto, valor, estoque FROM tb_produto WHERE id_nome = ?";
+		String sqlbuscarPorNome= "SELECT id_produto, nome_produto, valor, estoque FROM tb_produto WHERE id_nome = ?";
 		
-		PreparedStatement pstm = connection.prepareStatement(sqlbuscarPorId);
+		PreparedStatement pstm = connection.prepareStatement(sqlbuscarPorNome);
 		pstm.setString(2, nome);
 		pstm.execute();
 		

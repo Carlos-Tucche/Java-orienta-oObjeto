@@ -64,7 +64,7 @@ public class ClienteDao {
 	}
 	/*Metodo JDBC para BUSCAR POR ID CLIENTE*/
 
-	public Optional<Cliente> buscarPorId(Integer codigo) throws SQLException {
+	public Optional<Cliente> buscarPorId(Integer nome) throws SQLException {
 		
 		ConnectionFactory factory = new ConnectionFactory();
 		Connection connection = factory.abreConexão();
@@ -72,7 +72,7 @@ public class ClienteDao {
 		String sqlbuscarPorId= "SELECT id_cliente, nome_cliente, cidade, estado, email FROM tb_cliente WHERE id_cliente = ?";
 		
 		PreparedStatement pstm = connection.prepareStatement(sqlbuscarPorId);
-		pstm.setInt(1, codigo);
+		pstm.setInt(1, nome);
 		pstm.execute();
 		
 		ResultSet rst = pstm.getResultSet();
@@ -80,7 +80,7 @@ public class ClienteDao {
 		Optional<Cliente> clienteOptional = Optional.empty();
 		
 		if (rst.next()) {
-			Cliente cliente = new Cliente(sqlbuscarPorId, sqlbuscarPorId, sqlbuscarPorId, sqlbuscarPorId);
+			Cliente cliente = new Cliente();
 			cliente.setIdCliente(rst.getInt("id_cliente"));
 			cliente.setNomeCliente(rst.getString("nome_cliente"));
 			cliente.setCidade(rst.getString("cidade"));

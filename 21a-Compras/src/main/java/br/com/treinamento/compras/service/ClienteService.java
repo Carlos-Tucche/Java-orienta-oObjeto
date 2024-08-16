@@ -264,13 +264,12 @@ public class ClienteService {
 		}
 	}
 
-	public static Cliente getCliente() throws SQLException {
+	public static Integer getCliente() throws SQLException {
 		
 		ClienteDao clienteDao = new ClienteDao();
-
+		
 		System.out.println("Informe o CÓDIGO do cliente: ");
 		Integer codigo = App.scanner.nextInt();
-		App.scanner.nextLine();
 		
 		Optional<Cliente> clienteOptional= clienteDao.buscarPorId(codigo);
 		
@@ -280,8 +279,8 @@ public class ClienteService {
 			Cliente cliente = clienteOptional.get();
 			System.out.println("Cliente: "+ cliente.getNomeCliente());
 		}
-		return getCliente();
-
+		
+		return codigo;
 	}
 		
 }
